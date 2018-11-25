@@ -18,19 +18,19 @@ public class Guest {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guest_seq")
     
     private int guest_ID;
-    private String guest_fname;
-    private String guest_lname;
-    private String guest_email;
-    private String guest_phonenum;
+    private String fname;
+    private String lname;
+    private String email;
+    private String phonenum; 
 
     public Guest() {
     }
 
-    public Guest(String guest_fname, String guest_lname, String guest_email, String guest_phonenum) {
-        this.guest_fname = guest_fname;
-        this.guest_lname = guest_lname;
-        this.guest_email = guest_email;
-        this.guest_phonenum = guest_phonenum;
+    public Guest(String fname, String lname, String email, String phonenum) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.phonenum = phonenum;
     }
 
     public int getGuest_ID() {
@@ -41,41 +41,43 @@ public class Guest {
         this.guest_ID = guest_ID;
     }
 
-    public String getGuest_fname() {
-        return guest_fname;
+    public String getfname() {
+        return fname;
     }
 
-    public void setGuest_fname(String guest_fname) {
-        this.guest_fname = guest_fname;
+    public void setfname(String fname) {
+        this.fname = fname;
     }
 
-    public String getGuest_lname() {
-        return guest_lname;
+    public String getlname() {
+        return lname;
     }
 
-    public void setGuest_lname(String guest_lname) {
-        this.guest_lname = guest_lname;
+    public void setlname(String lname) {
+        this.lname = lname;
     }
 
-    public String getGuest_email() {
-        return guest_email;
+    public String getemail() {
+        return email;
     }
 
-    public void setGuest_email(String guest_email) {
-        this.guest_email = guest_email;
+    public void setemail(String email) {
+        this.email = email;
     }
 
-    public String getGuest_phonenum() {
-        return guest_phonenum;
+    public String getphonenum() {
+        return phonenum;
     }
 
-    public void setGuest_phonenum(String guest_phonenum) {
-        this.guest_phonenum = guest_phonenum;
+    public void setphonenum(String phonenum) {
+        this.phonenum = phonenum;
     }
     
     @Override
     public String toString() {
+        return"a";
     }
+    
 
 
 }
