@@ -21,7 +21,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "res_seq")
     
-    private int reservationID;
+    private int reservation_ID;
     private Calendar checkinDate;
     private Calendar checkoutDate;
     private int numofAdults;
@@ -39,12 +39,12 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }   
 
-    public int getReservationID() {
-        return reservationID;
+    public int getreservation_ID() {
+        return reservation_ID;
     }
 
-    public void setReservationID(int reservationID) {
-        this.reservationID = reservationID;
+    public void setreservation_ID(int reservation_ID) {
+        this.reservation_ID = reservation_ID;
     }
 
     public Calendar getCheckinDate() {
