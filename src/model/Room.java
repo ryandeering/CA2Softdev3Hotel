@@ -43,7 +43,7 @@ public class Room {
     }
 
     public void setroom_ID(int room_ID) {
-        this.room_ID = room_ID; //a
+        this.room_ID = room_ID; 
     }
 
     public String getRoom_type() {
