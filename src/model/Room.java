@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package model;
 
 import java.util.ArrayList;
@@ -37,6 +33,10 @@ public class Room {
     private String room_type;
     private int numofbeds;
     private double rate;
+    
+     @OneToMany(mappedBy = "room",cascade = CascadeType.ALL)
+    private List<Reservation> rlist = new ArrayList<>();
+    
 
     public int getroom_ID() {
         return room_ID;

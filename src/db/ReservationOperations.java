@@ -193,7 +193,7 @@ public class ReservationOperations {
     public void createGuesttable() {
         // Create a Table           
         try {
-            String sql = "CREATE TABLE Reservation (gid NUMBER PRIMARY KEY "
+            String sql = "CREATE TABLE Guest (gid NUMBER PRIMARY KEY "
                     + "NOT NULL,"
                     + "fname varchar2(100),"
                     + "lname varchar2(100),"
@@ -203,7 +203,7 @@ public class ReservationOperations {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            System.out.println("TABLE RESERVATION created");
+            System.out.println("TABLE GUEST created");
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Reservation table" + ex.getMessage());
