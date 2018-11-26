@@ -132,7 +132,9 @@ public class ReservationOperations {
                     + "checkoutdate DATE,"
                     + "numofadults NUMBER,"
                     + "numofchildren NUMBER,"
-                    + "reservationdate DATE"
+                    + "reservationdate DATE,"
+                    + "guestid NUMBER,"
+                    + "roomid NUMBER,"
                     + "FOREIGN KEY (guestid) REFERENCES GUEST (gid),"
                     + "FOREIGN KEY (roomid) REFERENCES ROOM (roid))";
 
@@ -190,6 +192,7 @@ public class ReservationOperations {
                     + "lname varchar2(100),"
                     + "email varchar2(100),"
                     + "phonenum varchar2(100),"
+                    + "billid NUMBER,"
                     + "FOREIGN KEY (billid) REFERENCES ROOM (bid))";
 
             pstmt = conn.prepareStatement(sql);
@@ -197,7 +200,7 @@ public class ReservationOperations {
             System.out.println("TABLE GUEST created");
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
-                    + "Reservation table" + ex.getMessage());
+                    + "Guest table" + ex.getMessage());
         }
     }
 
@@ -295,7 +298,7 @@ public class ReservationOperations {
 
         } catch (SQLException ex) {
             System.out.println("SQL Exception filling "
-                    + "BILLING table" + ex.getMessage());
+                    + "ROOM table" + ex.getMessage());
         }
     }
 
