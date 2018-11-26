@@ -27,6 +27,18 @@ public class Reservation {
     private int numofAdults;
     private int numofChildren;
     private Calendar reservationDate;
+    
+    
+     @ManyToOne()
+    @JoinColumn(name="rid")
+    private Room room;
+    
+        @ManyToOne()
+    @JoinColumn(name="gid")
+    private Guest gst;
+    
+     
+     
 
     public Reservation() {
     }

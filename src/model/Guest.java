@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -16,12 +18,19 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guest_seq")
-    
+
     private int guest_ID;
     private String fname;
     private String lname;
     private String email;
-    private String phonenum; 
+    private String phonenum;
+
+    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
+    private List<Reservation> rlist = new ArrayList<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bid")
+    private Billing bill;
 
     public Guest() {
     }
@@ -72,12 +81,10 @@ public class Guest {
     public void setphonenum(String phonenum) {
         this.phonenum = phonenum;
     }
-    
+
     @Override
     public String toString() {
-        return"a";
+        return "a";
     }
-    
-
 
 }
