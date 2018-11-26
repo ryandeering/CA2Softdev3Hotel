@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package db;
 
 import java.sql.Connection;
@@ -11,10 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import oracle.jdbc.pool.OracleDataSource;
 
-/**
- *
- * @author Ryan3
- */
 public class ReservationOperations {
 
     private Connection conn;
@@ -255,6 +246,76 @@ public class ReservationOperations {
             System.out.println("Room table dropped");
         } catch (SQLException ex) {
 
+        }
+    }
+
+    public void fillGuestTable() {
+        try {
+            String sql = "INSERT INTO GUEST VALUES(guest_seq.nextVal,?,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, "Hulk");
+            pstmt.setString(2, "Hogan");
+            pstmt.setString(3, "hulkamaniac@brother.com");
+            pstmt.setString(4, "02181520080518");
+            pstmt.setInt(5, 1);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "GUEST table" + ex.getMessage());
+        }
+    }
+
+    public void fillBillingTable() {
+        try {
+            String sql = "INSERT INTO BILLING VALUES(bill_seq.nextVal,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setDouble(1, 96.00);
+            pstmt.setDouble(2, 2.00);
+            pstmt.setDate(3, Date.valueOf("2018-11-26"));
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "BILLING table" + ex.getMessage());
+        }
+    }
+
+    public void fillRoomTable() {
+        try {
+            String sql = "INSERT INTO ROOM VALUES(room_seq.nextVal,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, "Single");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 90.00);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "BILLING table" + ex.getMessage());
+        }
+    }
+
+    public void fillReservationTable() {
+        try {
+            String sql = "INSERT INTO ROOM VALUES(room_seq.nextVal,?,?,?,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setDate(1, Date.valueOf("2018-11-26"));
+            pstmt.setDate(2, Date.valueOf("2018-11-29"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-26"));
+            pstmt.setInt(6, 1);
+            pstmt.setInt(7, 1);
+            pstmt.executeUpdate();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "BILLING table" + ex.getMessage());
         }
     }
 
