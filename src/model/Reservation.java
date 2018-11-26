@@ -1,4 +1,3 @@
-
 package model;
 
 import java.util.ArrayList;
@@ -16,25 +15,24 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "res_seq")
-    
+
     private int reservation_ID;
+    @Temporal(TemporalType.DATE)
     private Calendar checkinDate;
+    @Temporal(TemporalType.DATE)
     private Calendar checkoutDate;
     private int numofAdults;
     private int numofChildren;
+    @Temporal(TemporalType.DATE)
     private Calendar reservationDate;
-    
-    
-     @ManyToOne()
-    @JoinColumn(name="rid")
+
+    @ManyToOne()
+    @JoinColumn(name = "rid")
     private Room room;
-    
-        @ManyToOne()
-    @JoinColumn(name="gid")
+
+    @ManyToOne()
+    @JoinColumn(name = "gid")
     private Guest gst;
-    
-     
-     
 
     public Reservation() {
     }
@@ -45,7 +43,7 @@ public class Reservation {
         this.numofAdults = numofAdults;
         this.numofChildren = numofChildren;
         this.reservationDate = reservationDate;
-    }   
+    }
 
     public int getreservation_ID() {
         return reservation_ID;

@@ -1,13 +1,7 @@
-
 package model;
 
 import java.util.Calendar;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "BILLING")
@@ -23,6 +17,7 @@ public class Billing {
     private int billing_ID;
     private double initial_charges;
     private double misc_charges;
+    @Temporal(TemporalType.DATE)
     private Calendar pay_date;
 
     public Billing() {
