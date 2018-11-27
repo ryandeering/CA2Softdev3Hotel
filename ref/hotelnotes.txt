@@ -1,0 +1,14 @@
+Guest *
+Reservation *
+Room * - setprice in constructor?
+Bill - invoice_num (a rate number * nights) , room charge, payment_date
+
+
+Create a Reservation - ask if they've used hotel before, to use existing guest data? if used before, use guest ID, take current date from Calendar object 
+Cancel (Delete) a Reservation -- cascading, useless information
+
+Update Reservation Details -- print the previous old one first when given the id, proceed with update (y/n) (or ask what the user wants to update in the booking)
+Display Reservations for Customer
+Display Rooms - take in whether they want all, taken, or not taken
+Display Room Properties - bed status, smoking or non smoking, 	prints reservation information as well (if any)
+
