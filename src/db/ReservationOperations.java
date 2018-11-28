@@ -101,7 +101,7 @@ public class ReservationOperations {
 
     public void dropRoomSequence() {
         try {
-            String s2 = "drop sequence res_seq";
+            String s2 = "drop sequence room_seq";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
             System.out.println("Room Sequence dropped");
@@ -193,7 +193,7 @@ public class ReservationOperations {
                     + "email varchar2(100),"
                     + "phonenum varchar2(100),"
                     + "billid NUMBER,"
-                    + "FOREIGN KEY (billid) REFERENCES ROOM (bid))";
+                    + "FOREIGN KEY (billid) REFERENCES BILLING (bid))";
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
@@ -260,8 +260,78 @@ public class ReservationOperations {
             pstmt.setString(1, "Hulk");
             pstmt.setString(2, "Hogan");
             pstmt.setString(3, "hulkamaniac@brother.com");
-            pstmt.setString(4, "02181520080518");
+            pstmt.setString(4, "21815200805");
             pstmt.setInt(5, 1);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Don");
+            pstmt.setString(2, "Quixote");
+            pstmt.setString(3, "sadboy@iol.com");
+            pstmt.setString(4, "69420133718");
+            pstmt.setInt(5, 2);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Karl");
+            pstmt.setString(2, "Marx");
+            pstmt.setString(3, "not@bourgie@hotmail.com");
+            pstmt.setString(4, "22482974398");
+            pstmt.setInt(5, 3);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "SpongeBob");
+            pstmt.setString(2, "Squarepants");
+            pstmt.setString(3, "bahaha@pineapple.com");
+            pstmt.setString(4, "22582238578");
+            pstmt.setInt(5, 4);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Leo");
+            pstmt.setString(2, "Francis");
+            pstmt.setString(3, "mrweightlifter@bigboy.com");
+            pstmt.setString(4, "33389568965");
+            pstmt.setInt(5, 5);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Haruki");
+            pstmt.setString(2, "Murakami");
+            pstmt.setString(3, "hm@asahi-net.jp");
+            pstmt.setString(4, "78798498576");
+            pstmt.setInt(5, 6);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "David");
+            pstmt.setString(2, "Byrne");
+            pstmt.setString(3, "talkinghead@gmail.com");
+            pstmt.setString(4, "96636404420");
+            pstmt.setInt(5, 7);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Mark");
+            pstmt.setString(2, "E. Smith");
+            pstmt.setString(3, "felldown@hotmail.com");
+            pstmt.setString(4, "76082241511");
+            pstmt.setInt(5, 8);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Ralf");
+            pstmt.setString(2, "Hutter");
+            pstmt.setString(3, "artsandcrafts@yahoo.co.uk");
+            pstmt.setString(4, "99436916164");
+            pstmt.setInt(5, 9);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Zsa Zsa");
+            pstmt.setString(2, "Gabor");
+            pstmt.setString(3, "aristocrat20@muchomail.ie");
+            pstmt.setString(4, "90595768581");
+            pstmt.setInt(5, 10);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Maureen");
+            pstmt.setString(2, "O'Hara");
+            pstmt.setString(3, "miracleon34th@street.com");
+            pstmt.setString(4, "1637163954");
+            pstmt.setInt(5, 11);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -304,7 +374,7 @@ public class ReservationOperations {
 
     public void fillReservationTable() {
         try {
-            String sql = "INSERT INTO ROOM VALUES(room_seq.nextVal,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO RESERVATION VALUES(res_seq.nextVal,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
             pstmt.setDate(1, Date.valueOf("2018-11-26"));
@@ -318,7 +388,7 @@ public class ReservationOperations {
 
         } catch (SQLException ex) {
             System.out.println("SQL Exception filling "
-                    + "BILLING table" + ex.getMessage());
+                    + "Reservation table" + ex.getMessage());
         }
     }
 
