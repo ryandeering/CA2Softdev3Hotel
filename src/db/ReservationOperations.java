@@ -361,9 +361,44 @@ public class ReservationOperations {
             String sql = "INSERT INTO ROOM VALUES(room_seq.nextVal,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
-            pstmt.setString(1, "Single");
+            pstmt.setString(1, "Single Bed");
             pstmt.setInt(2, 1);
-            pstmt.setDouble(3, 90.00);
+            pstmt.setDouble(3, 60.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Single Bed Premium");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 120.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Double Bed");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 100.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Double Bed");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 100.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Single Bed");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 60.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Family Room");
+            pstmt.setInt(2, 3);
+            pstmt.setDouble(3, 140.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Family Room");
+            pstmt.setInt(2, 3);
+            pstmt.setDouble(3, 140.00);
+            pstmt.executeUpdate();
+
+            pstmt.setString(1, "Double Bed Premium");
+            pstmt.setInt(2, 1);
+            pstmt.setDouble(3, 200.00);
             pstmt.executeUpdate();
 
         } catch (SQLException ex) {
@@ -377,12 +412,120 @@ public class ReservationOperations {
             String sql = "INSERT INTO RESERVATION VALUES(res_seq.nextVal,?,?,?,?,?,?,?)";
             pstmt = conn.prepareStatement(sql);
 
+            pstmt.setDate(1, Date.valueOf("2018-11-04"));
+            pstmt.setDate(2, Date.valueOf("2018-11-07"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-01"));
+            pstmt.setInt(6, 1);
+            pstmt.setInt(7, 1);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-02"));
+            pstmt.setDate(2, Date.valueOf("2018-11-03"));
+            pstmt.setInt(3, 2);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-02"));
+            pstmt.setInt(6, 2);
+            pstmt.setInt(7, 5);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-04"));
+            pstmt.setDate(2, Date.valueOf("2018-11-11"));
+            pstmt.setInt(3, 2);
+            pstmt.setInt(4, 2);
+            pstmt.setDate(5, Date.valueOf("2018-11-04"));
+            pstmt.setInt(6, 3);
+            pstmt.setInt(7, 6);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-05"));
+            pstmt.setDate(2, Date.valueOf("2018-11-13"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-05"));
+            pstmt.setInt(6, 1);
+            pstmt.setInt(7, 1);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-05"));
+            pstmt.setDate(2, Date.valueOf("2018-11-07"));
+            pstmt.setInt(3, 2);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-05"));
+            pstmt.setInt(6, 4);
+            pstmt.setInt(7, 8);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-07"));
+            pstmt.setDate(2, Date.valueOf("2018-11-08"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-07"));
+            pstmt.setInt(6, 5);
+            pstmt.setInt(7, 2);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-08"));
+            pstmt.setDate(2, Date.valueOf("2018-11-15"));
+            pstmt.setInt(3, 2);
+            pstmt.setInt(4, 2);
+            pstmt.setDate(5, Date.valueOf("2018-11-06"));
+            pstmt.setInt(6, 6);
+            pstmt.setInt(7, 7);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-15"));
+            pstmt.setDate(2, Date.valueOf("2018-11-16"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-02"));
+            pstmt.setInt(6, 7);
+            pstmt.setInt(7, 3);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-19"));
+            pstmt.setDate(2, Date.valueOf("2018-11-21"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 1);
+            pstmt.setDate(5, Date.valueOf("2018-11-19"));
+            pstmt.setInt(6, 8);
+            pstmt.setInt(7, 7);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-22"));
+            pstmt.setDate(2, Date.valueOf("2018-11-25"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-22"));
+            pstmt.setInt(6, 1);
+            pstmt.setInt(7, 1);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-23"));
+            pstmt.setDate(2, Date.valueOf("2018-11-24"));
+            pstmt.setInt(3, 2);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-23"));
+            pstmt.setInt(6, 9);
+            pstmt.setInt(7, 4);
+            pstmt.executeUpdate();
+
             pstmt.setDate(1, Date.valueOf("2018-11-26"));
-            pstmt.setDate(2, Date.valueOf("2018-11-29"));
+            pstmt.setDate(2, Date.valueOf("2018-11-28"));
             pstmt.setInt(3, 1);
             pstmt.setInt(4, 0);
             pstmt.setDate(5, Date.valueOf("2018-11-26"));
-            pstmt.setInt(6, 1);
+            pstmt.setInt(6, 10);
+            pstmt.setInt(7, 5);
+            pstmt.executeUpdate();
+
+            pstmt.setDate(1, Date.valueOf("2018-11-28"));
+            pstmt.setDate(2, Date.valueOf("2018-11-29"));
+            pstmt.setInt(3, 1);
+            pstmt.setInt(4, 0);
+            pstmt.setDate(5, Date.valueOf("2018-11-28"));
+            pstmt.setInt(6, 11);
             pstmt.setInt(7, 1);
             pstmt.executeUpdate();
 
