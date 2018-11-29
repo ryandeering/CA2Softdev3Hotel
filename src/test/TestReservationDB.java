@@ -12,28 +12,29 @@ public class TestReservationDB {
 
         ReservationOperations ro = new ReservationOperations();
         ro.openDB();
-        ro.dropBillingSequence();
+        
         ro.dropGuestSequence();
+        ro.dropBillingSequence();
         ro.dropRoomSequence();
         ro.dropReservationSequence();
 
-        ro.dropBillingTable();
         ro.dropGuestTable();
+        ro.dropBillingTable();
         ro.dropRoomTable();
         ro.dropReservationTable();
 
-        ro.createBillingtable();
         ro.createGuesttable();
+        ro.createBillingtable();
         ro.createRoomtable();
         ro.createReservationtable();
 
-        ro.createBillingSequence();
         ro.createGuestSequence();
+        ro.createBillingSequence();
         ro.createReservationSequence();
         ro.createRoomSequence();
 
-        ro.fillBillingTable();
         ro.fillGuestTable();
+        ro.fillBillingTable();
         ro.fillRoomTable();
         ro.fillReservationTable();
 

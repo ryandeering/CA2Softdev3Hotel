@@ -23,9 +23,7 @@ public class Guest {
     @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
     private List<Reservation> rlist = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bid")
-    private Billing bill;
+  
 
     public Guest() {
     }

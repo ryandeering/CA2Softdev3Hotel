@@ -19,6 +19,10 @@ public class Billing {
     private double misc_charges;
     @Temporal(TemporalType.DATE)
     private Calendar pay_date;
+    
+      @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bid")
+    private Guest gst;
 
     public Billing() {
     }
