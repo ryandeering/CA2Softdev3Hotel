@@ -34,9 +34,7 @@ public class Reservation {
     @JoinColumn(name = "gid")
     private Guest gst;
 
-    public Reservation() {
-    }
-
+    
     public Reservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
         this.checkinDate = checkinDate;
         this.checkoutDate = checkoutDate;

@@ -36,14 +36,9 @@ public class PersistenceOperations {
         em.getTransaction().commit();
     }
 
-    public void addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
+      public void addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
         em.getTransaction().begin();
-        Reservation r = new Reservation();
-        r.setCheckinDate(checkinDate);
-        r.setCheckoutDate(checkoutDate);
-        r.setNumofAdults(numofAdults);
-        r.setNumofChildren(numofChildren);
-        r.setReservationDate(reservationDate);
+        Reservation r = new Reservation(checkinDate,checkoutDate,numofAdults,numofChildren,reservationDate);
         em.persist(r);
         em.getTransaction().commit();
     }
