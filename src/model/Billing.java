@@ -14,14 +14,14 @@ public class Billing {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bill_seq")
 
-    private int billing_ID;
+    private int bid;
     private double initial_charges;
     private double misc_charges;
     @Temporal(TemporalType.DATE)
     private Calendar pay_date;
     
-      @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bid")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn(name = "bid")
     private Guest gst;
 
     public Billing() {
@@ -33,12 +33,12 @@ public class Billing {
         this.pay_date = pay_date;
     }
 
-    public int getBilling_ID() {
-        return billing_ID;
+    public int getBid() {
+        return bid;
     }
 
-    public void setBilling_ID(int billing_ID) {
-        this.billing_ID = billing_ID;
+    public void setBilling_ID(int bid) {
+        this.bid = bid;
     }
 
     public double getInitial_charges() {

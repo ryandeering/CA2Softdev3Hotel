@@ -46,7 +46,7 @@ public class TestReservationDB {
         ro.fillRoomTable();
         ro.fillReservationTable();
 
-        ro.closeDB();
+        
 
         boolean quit = false;
         while (!quit) {
@@ -179,7 +179,7 @@ public class TestReservationDB {
                     System.out.println("Error! Invalid command");
                     break;
             }
-
+ro.closeDB();
         }
     }
 }

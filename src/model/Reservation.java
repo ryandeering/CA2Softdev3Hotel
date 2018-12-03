@@ -15,8 +15,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "res_seq")
-
-    private int reservation_ID;
+    private int rid;
     @Temporal(TemporalType.DATE)
     private Calendar checkinDate;
     @Temporal(TemporalType.DATE)
@@ -27,7 +26,7 @@ public class Reservation {
     private Calendar reservationDate;
 
     @ManyToOne()
-    @JoinColumn(name = "rid")
+    @JoinColumn(name = "roid")
     private Room room;
 
     @ManyToOne()
@@ -43,12 +42,16 @@ public class Reservation {
         this.reservationDate = reservationDate;
     }
 
-    public int getreservation_ID() {
-        return reservation_ID;
+    public Reservation() {
     }
 
-    public void setreservation_ID(int reservation_ID) {
-        this.reservation_ID = reservation_ID;
+    
+    public int getRid() { //lol
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 
     public Calendar getCheckinDate() {

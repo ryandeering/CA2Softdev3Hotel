@@ -77,7 +77,7 @@ public class PersistenceOperations {
         em.getTransaction().begin();
 
         TypedQuery<Reservation> query
-                = em.createQuery("SELECT r FROM Reservation r order by r.roid",
+                = em.createQuery("SELECT r FROM Reservation r order by r.rid",
                         Reservation.class);
         List<Reservation> results = query.getResultList();
 
@@ -92,7 +92,7 @@ public class PersistenceOperations {
         em.getTransaction().begin();
 
         TypedQuery<Room> query
-                = em.createQuery("SELECT ro FROM Room ro order by ro.rid",
+                = em.createQuery("SELECT ro FROM Room ro order by ro.roid",
                         Room.class);
         List<Room> results = query.getResultList();
 

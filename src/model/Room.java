@@ -29,7 +29,7 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
     
-    private int room_ID;
+    private int roid;
     private String room_type;
     private int numofbeds;
     private double rate;
@@ -38,12 +38,12 @@ public class Room {
     private List<Reservation> rlist = new ArrayList<>();
     
 
-    public int getroom_ID() {
-        return room_ID;
+    public int getRoid() {
+        return roid;
     }
 
-    public void setroom_ID(int room_ID) {
-        this.room_ID = room_ID; 
+    public void setRoid(int roid) {
+        this.roid = roid; 
     }
 
     public String getRoom_type() {

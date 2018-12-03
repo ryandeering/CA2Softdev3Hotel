@@ -13,8 +13,7 @@ public class Guest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guest_seq")
-
-    private int guest_ID;
+    private int gid;
     private String fname;
     private String lname;
     private String email;
@@ -23,7 +22,8 @@ public class Guest {
     @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
     private List<Reservation> rlist = new ArrayList<>();
 
-  
+     @OneToMany(mappedBy = "gst",cascade = CascadeType.ALL)
+    private List<Billing> blist = new ArrayList<>();
 
     public Guest() {
     }
@@ -35,12 +35,12 @@ public class Guest {
         this.phonenum = phonenum;
     }
 
-    public int getGuest_ID() {
-        return guest_ID;
+    public int getGid() {
+        return gid;
     }
 
-    public void setGuest_ID(int guest_ID) {
-        this.guest_ID = guest_ID;
+    public void setGid(int gid) {
+        this.gid = gid;
     }
 
     public String getfname() {

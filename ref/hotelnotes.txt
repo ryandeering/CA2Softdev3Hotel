@@ -22,3 +22,5 @@ USE CALENDAR OBJECT to CALCULATE THIS!!!!
 Billing details: display, then prompt if wish to be modified 
 
 children formula: rate * 0.2 per child
+
+https://stackoverflow.com/questions/3417097/jpa-difference-between-joincolumn-and-primarykeyjoincolumn
