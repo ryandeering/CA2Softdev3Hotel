@@ -2,6 +2,7 @@ package test;
 
 import db.*;
 import model.*;
+import java.util.*;
 import java.util.Calendar;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,6 +20,8 @@ public class TestReservationDB {
 
         ReservationOperations ro = new ReservationOperations();
    
+       Scanner sc = new Scanner(System.in);
+        
         ro.openDB();
 
         ro.dropGuestSequence();
@@ -46,10 +49,26 @@ public class TestReservationDB {
         ro.fillRoomTable();
         ro.fillReservationTable();
 
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Welcome to the Heartbreak Hotel!");
+        System.out.println("Established 1/11/2018!");
+        System.out.println("Totally bug free! We think.");
+        System.out.println("No on-side accidents but the JVM really likes eating RAM and CPU power.");
+        
+        
+        
+        
+        
+        
+        
+        
         
 
         boolean quit = false;
         while (!quit) {
+            System.out.println("");
+            System.out.println("");
             System.out.println("Please press 1 to create a reservation");
             System.out.println("Please press 2 to cancel a reservation");
             System.out.println("Please press 3 to update reservation details");
@@ -161,7 +180,10 @@ public class TestReservationDB {
             po.addReservation(checkinDates, checkoutDates, adultss, childs, reservationDates);
                     break;
                 case "4":
-                    po.viewReservation();
+                    System.out.println("Please input the guest id you want to view the reservations made for.");
+                   int id = sc.nextInt();
+                   sc.nextLine();
+                   po.viewGuestReservations(id);
                     break;
                 case "5":
                     po.viewRoom();
@@ -179,7 +201,8 @@ public class TestReservationDB {
                     System.out.println("Error! Invalid command");
                     break;
             }
-ro.closeDB();
+
         }
+        ro.closeDB();
     }
 }

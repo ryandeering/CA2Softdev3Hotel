@@ -16,18 +16,18 @@ public class ReservationOperations {
             OracleDataSource ods = new OracleDataSource();
             
             
-            //   ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
-           // ods.setUser("hr");
-           // ods.setPassword("passhr"); // standard
+               ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
+            ods.setUser("hr");
+            ods.setPassword("passhr"); // standard
             
 
          //   ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
            // ods.setUser("SYSTEM");
            // ods.setPassword("oracle"); // ryan linux
 
-           ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-            ods.setUser("X00144631");
-            ods.setPassword("db21Aug98"); // ryan college
+        //   ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+           // ods.setUser("X00144631");
+          // ods.setPassword("db21Aug98"); // ryan college
            
            
             conn = ods.getConnection();
@@ -139,8 +139,8 @@ public class ReservationOperations {
         try {
             String sql = "CREATE TABLE Reservation (rid NUMBER PRIMARY KEY "
                     + "NOT NULL,"
-                    + "checkinddate DATE,"
-                    + "checkoutdate DATE,"
+                    + "cidate DATE,"
+                    + "codate DATE,"
                     + "numofadults NUMBER,"
                     + "numofchildren NUMBER,"
                     + "reservationdate DATE,"
@@ -163,7 +163,7 @@ public class ReservationOperations {
         try {
             String sql = "CREATE TABLE Room (roid NUMBER PRIMARY KEY "
                     + "NOT NULL," // taking ROIDS brother - HH
-                    + "roomtype varchar2(100),"
+                    + "roomtier varchar2(100),"
                     + "numofbeds NUMBER,"
                     + "rate NUMBER)";
 

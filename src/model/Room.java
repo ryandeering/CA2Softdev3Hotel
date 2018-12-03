@@ -20,8 +20,8 @@ public class Room {
     public Room() {
     }
 
-    public Room(String room_type, int numofbeds, double rate) {
-        this.room_type = room_type;
+    public Room(String roomtier, int numofbeds, double rate) {
+        this.roomtier = roomtier;
         this.numofbeds = numofbeds;
         this.rate = rate;
     }
@@ -29,8 +29,8 @@ public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_seq")
     
-    private int roid;
-    private String room_type;
+   private int roid;
+    private String roomtier;
     private int numofbeds;
     private double rate;
     
@@ -46,12 +46,12 @@ public class Room {
         this.roid = roid; 
     }
 
-    public String getRoom_type() {
-        return room_type;
+    public String getroomtier() {
+        return roomtier;
     }
 
-    public void setRoom_type(String room_type) {
-        this.room_type = room_type;
+    public void setroomtier(String roomtier) {
+        this.roomtier = roomtier;
     }
 
     public int getNumofbeds() {

@@ -36,9 +36,9 @@ public class PersistenceOperations {
         em.getTransaction().commit();
     }
 
-      public void addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
+      public void addReservation(Calendar cidate, Calendar codate, int numofAdults, int numofChildren, Calendar reservationDate) {
         em.getTransaction().begin();
-        Reservation r = new Reservation(checkinDate,checkoutDate,numofAdults,numofChildren,reservationDate);
+        Reservation r = new Reservation(cidate,codate,numofAdults,numofChildren,reservationDate);
         em.persist(r);
         em.getTransaction().commit();
     }
@@ -102,6 +102,18 @@ public class PersistenceOperations {
         em.getTransaction().commit();
 
     }
+    
+    public void viewGuestReservations(int id){
+    em.getTransaction().begin();
+    Guest g = em.find(Guest.class, id);
+    if(g==null){
+        System.out.println("Guest does not exist, please try again!");
+    } else {
+        g.printReservations();
+    }
+    em.getTransaction().commit();
+}
+    
 
     public void close() {
         em.close();

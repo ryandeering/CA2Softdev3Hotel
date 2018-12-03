@@ -22,7 +22,7 @@ public class Guest {
     @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
     private List<Reservation> rlist = new ArrayList<>();
 
-     @OneToMany(mappedBy = "gst",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
     private List<Billing> blist = new ArrayList<>();
 
     public Guest() {
@@ -77,7 +77,19 @@ public class Guest {
 
     @Override
     public String toString() {
-        return "a";
+        String s = String.format("Guest ID: " + gid + " Name: " + fname + " " + lname + " Email: " + email + " Phonenum: " + phonenum);
+
+        return s;
+    }
+    
+     public void printReservations(){
+        System.out.println("Reservations for: "+ fname + " " + lname);
+        for (int i = 0; i < rlist.size(); i++) {
+            System.out.println(rlist.get(i));
+        }
+
     }
 
 }
+
+
