@@ -14,22 +14,17 @@ public class ReservationOperations {
     public Connection openDB() {
         try {
             OracleDataSource ods = new OracleDataSource();
-            
-            
-               ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
+
+            ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
             ods.setUser("hr");
             ods.setPassword("passhr"); // standard
-            
 
-         //   ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
-           // ods.setUser("SYSTEM");
-           // ods.setPassword("oracle"); // ryan linux
-
-        //   ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-           // ods.setUser("X00144631");
-          // ods.setPassword("db21Aug98"); // ryan college
-           
-           
+            //   ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
+            // ods.setUser("SYSTEM");
+            // ods.setPassword("oracle"); // ryan linux
+            //   ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+            // ods.setUser("X00144631");
+            // ods.setPassword("db21Aug98"); // ryan college
             conn = ods.getConnection();
             System.out.println("connected.");
         } catch (SQLException e) {
@@ -43,9 +38,9 @@ public class ReservationOperations {
             String s2 = "drop sequence bill_seq";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
-            System.out.println("Billing Sequence dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.print("Problem with dropping Billing Sequence " + ex.getMessage());
         }
     }
 
@@ -55,7 +50,7 @@ public class ReservationOperations {
             String createseq1 = "create sequence bill_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
-            System.out.println("Billing Sequence created");
+
         } catch (SQLException ex) {
             System.out.print("Problem with Billing Sequence " + ex.getMessage());
         }
@@ -67,9 +62,9 @@ public class ReservationOperations {
             String s2 = "drop sequence guest_seq";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
-            System.out.println("Guest Sequence dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.print("Problem with dropping Guest Sequence " + ex.getMessage());
         }
     }
 
@@ -79,7 +74,7 @@ public class ReservationOperations {
             String createseq1 = "create sequence guest_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
-            System.out.println("Guest Sequence created");
+
         } catch (SQLException ex) {
             System.out.print("Problem with Guest Sequence " + ex.getMessage());
         }
@@ -91,9 +86,9 @@ public class ReservationOperations {
             String s2 = "drop sequence res_seq";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
-            System.out.println("Reservation Sequence dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.print("Problem with dropping Reservation Sequence " + ex.getMessage());
         }
     }
 
@@ -103,7 +98,7 @@ public class ReservationOperations {
             String createseq1 = "create sequence res_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
-            System.out.println("Reservation Sequence created");
+
         } catch (SQLException ex) {
             System.out.print("Problem with Reservation Sequence " + ex.getMessage());
         }
@@ -115,7 +110,7 @@ public class ReservationOperations {
             String s2 = "drop sequence room_seq";
             pstmt = conn.prepareStatement(s2);
             pstmt.executeUpdate();
-            System.out.println("Room Sequence dropped");
+
         } catch (SQLException ex) {
 
         }
@@ -127,7 +122,7 @@ public class ReservationOperations {
             String createseq1 = "create sequence room_seq increment by 1 start with 1";
             pstmt = conn.prepareStatement(createseq1);
             pstmt.executeUpdate();
-            System.out.println("Room Sequence created");
+
         } catch (SQLException ex) {
             System.out.print("Problem with Reservation Sequence " + ex.getMessage());
         }
@@ -151,7 +146,7 @@ public class ReservationOperations {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            System.out.println("TABLE RESERVATION created");
+
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Reservation table" + ex.getMessage());
@@ -169,7 +164,7 @@ public class ReservationOperations {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            System.out.println("TABLE ROOM created");
+
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Room table" + ex.getMessage());
@@ -189,7 +184,7 @@ public class ReservationOperations {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            System.out.println("TABLE Billing created");
+
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Billing table" + ex.getMessage());
@@ -208,7 +203,7 @@ public class ReservationOperations {
 
             pstmt = conn.prepareStatement(sql);
             pstmt.executeUpdate();
-            System.out.println("TABLE GUEST created");
+
         } catch (SQLException ex) {
             System.out.println("SQL Exception creating "
                     + "Guest table" + ex.getMessage());
@@ -216,50 +211,55 @@ public class ReservationOperations {
     }
 
     public void dropReservationTable() {
-        System.out.println("Checking for existence of RESERVATION table");
+
         try {
             String s1 = "DROP TABLE RESERVATION CASCADE CONSTRAINTS";
             pstmt = conn.prepareStatement(s1);
             pstmt.executeUpdate();
-            System.out.println("Reservation table dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception dropping "
+                    + "Reservation table" + ex.getMessage());
         }
     }
 
     public void dropBillingTable() {
-        System.out.println("Checking for existence of Billing table");
+
         try {
             String s1 = "DROP TABLE BILLING CASCADE CONSTRAINTS";
             pstmt = conn.prepareStatement(s1);
             pstmt.executeUpdate();
-            System.out.println("Billing table dropped");
+
         } catch (SQLException ex) {
+            System.out.println("SQL Exception dropping "
+                    + "Billing table" + ex.getMessage());
 
         }
     }
 
     public void dropGuestTable() {
-        System.out.println("Checking for existence of GUEST table");
+
         try {
             String s1 = "DROP TABLE GUEST CASCADE CONSTRAINTS";
             pstmt = conn.prepareStatement(s1);
             pstmt.executeUpdate();
-            System.out.println("Guest table dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception dropping "
+                    + "Guest table" + ex.getMessage());
         }
     }
 
     public void dropRoomTable() {
-        System.out.println("Checking for existence of ROOM table");
+
         try {
             String s1 = "DROP TABLE ROOM CASCADE CONSTRAINTS";
             pstmt = conn.prepareStatement(s1);
             pstmt.executeUpdate();
-            System.out.println("Room table dropped");
-        } catch (SQLException ex) {
 
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception dropping "
+                    + "Room table" + ex.getMessage());
         }
     }
 
@@ -426,7 +426,7 @@ public class ReservationOperations {
             pstmt.setDate(3, Date.valueOf("2018-11-28"));
             pstmt.setInt(4, 10);
             pstmt.executeUpdate();
-            
+
             pstmt.setDouble(1, 60.00);
             pstmt.setDouble(2, 0.00);
             pstmt.setDate(3, Date.valueOf("2018-11-29"));
