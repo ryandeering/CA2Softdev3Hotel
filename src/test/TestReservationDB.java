@@ -65,23 +65,23 @@ public class TestReservationDB {
             System.out.println("");
             System.out.println("");
             System.out.println("READ:");
-            System.out.println("Please press 3 to see who is currently staying in the hotel.");
-            System.out.println("Please press 4 to see who stayed in the hotel on a specified date.");
-            System.out.println("Please press 5 to display reservation details for a guest");
-            System.out.println("Please press 6 to display rooms (all, taken, not taken)");
+            System.out.println("Please press 2 to see who is currently staying in the hotel.");
+            System.out.println("Please press 3 to see who stayed in the hotel on a specified date.");
+            System.out.println("Please press 4 to display reservation details for a guest");
+            System.out.println("Please press 5 to display rooms (all, taken, not taken)");
             System.out.println("");
             System.out.println("");
             System.out.println("UPDATE:");
-            System.out.println("Please press 7 to update reservation details");
-            System.out.println("Please press 8 to update guest details");
-            System.out.println("Please press 9 to update a guest's billing details.");
+            System.out.println("Please press 6 to update reservation details");
+            System.out.println("Please press 7 to update guest details");
+            System.out.println("Please press 8 to update a guest's billing details.");
             System.out.println("");
             System.out.println("");
             System.out.println("DELETE:");
-            System.out.println("Please press 10 to delete a reservation");
-            System.out.println("Please press 11 to delete a guest from the records.");
+            System.out.println("Please press 9 to delete a reservation");
+            System.out.println("Please press 10 to delete a guest from the records.");
             // delete billing method might be unnecessary
-            System.out.println("Press 8 to quit");
+            System.out.println("Press 11 to quit");
 
             String input = stdin.readLine();
             if (input == null) {
@@ -134,9 +134,7 @@ public class TestReservationDB {
                     po.addReservation(checkinDate, checkoutDate, adults, child, reservationDate);
                     break;
                 case "2":
-                    System.out.println("Enter your reservation date:");
-                    input = stdin.readLine();
-                    ro.dropReservationTable();
+                    po.viewGuest();                    
                     break;
                 case "3":
                     // addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
@@ -188,12 +186,14 @@ public class TestReservationDB {
                     po.viewRoom();
                     break;
                 case "6":
-                    po.viewGuest();
+                    System.out.println("Enter your reservation date:");
+                    input = stdin.readLine();
+                    ro.dropReservationTable();
                     break;
                 case "7":
                     po.viewBilling();
                     break;
-                case "8":
+                case "11":
                     quit = true;
                     break;
                 default:

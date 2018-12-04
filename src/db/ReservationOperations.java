@@ -23,8 +23,8 @@ public class ReservationOperations {
             // ods.setUser("SYSTEM");
             // ods.setPassword("oracle"); // ryan linux
                ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-             ods.setUser("X00144631");
-             ods.setPassword("db21Aug98"); // ryan college
+             ods.setUser("hr");
+             ods.setPassword("passhr"); // ryan college
             conn = ods.getConnection();
             System.out.println("connected.");
         } catch (SQLException e) {
