@@ -65,21 +65,21 @@ public class TestReservationDB {
             System.out.println("");
             System.out.println("");
             System.out.println("READ:");
-            System.out.println("Please press 2 to see who is currently staying in the hotel.");
-            System.out.println("Please press 3 to see who stayed in the hotel on a specified date.");
-            System.out.println("Please press 4 to display reservation details for a guest");
-            System.out.println("Please press 5 to display rooms (all, taken, not taken)");
+            System.out.println("Please press 2 to see who is currently staying in the hotel."); // daria 
+            System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); //daria 
+            System.out.println("Please press 4 to display reservation details for a guest"); //daria 
+            System.out.println("Please press 5 to display rooms (all, taken, not taken)"); //daria 
             System.out.println("");
             System.out.println("");
             System.out.println("UPDATE:");
-            System.out.println("Please press 6 to update reservation details");
-            System.out.println("Please press 7 to update guest details");
-            System.out.println("Please press 8 to update a guest's billing details.");
+            System.out.println("Please press 6 to update reservation details"); // daria 
+            System.out.println("Please press 7 to update guest details"); // ryan
+            System.out.println("Please press 8 to update a guest's billing details."); // ryan
             System.out.println("");
             System.out.println("");
             System.out.println("DELETE:");
-            System.out.println("Please press 9 to delete a reservation");
-            System.out.println("Please press 10 to delete a guest from the records.");
+            System.out.println("Please press 9 to delete a reservation"); //ryan
+            System.out.println("Please press 10 to delete a guest from the records."); // ryan
             // delete billing method might be unnecessary
             System.out.println("Press 11 to quit");
 
