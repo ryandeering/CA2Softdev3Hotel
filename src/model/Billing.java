@@ -15,10 +15,10 @@ public class Billing {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bill_seq")
 
     private int bid;
-    private double initial_charges;
-    private double misc_charges;
+    private double initialcharges;
+    private double misccharges;
     @Temporal(TemporalType.DATE)
-    private Calendar pay_date;
+    private Calendar paydate;
     
     @ManyToOne(cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn(name = "bid")
@@ -27,10 +27,10 @@ public class Billing {
     public Billing() {
     }
 
-    public Billing(double initial_charges, double misc_charges, Calendar pay_date) {
-        this.initial_charges = initial_charges;
-        this.misc_charges = misc_charges;
-        this.pay_date = pay_date;
+    public Billing(double initialcharges, double misccharges, Calendar paydate) {
+        this.initialcharges = initialcharges;
+        this.misccharges = misccharges;
+        this.paydate = paydate; // jesus christ i hate oracle's reserved words i can't even use DATE
     }
 
     public int getBid() {
@@ -41,28 +41,28 @@ public class Billing {
         this.bid = bid;
     }
 
-    public double getInitial_charges() {
-        return initial_charges;
+    public double getInitialcharges() {
+        return initialcharges;
     }
 
-    public void setInitial_charges(double initial_charges) {
-        this.initial_charges = initial_charges;
+    public void setInitialcharges(double initial_charges) {
+        this.initialcharges = initial_charges;
     }
 
-    public double getMisc_charges() {
-        return misc_charges;
+    public double getMisccharges() {
+        return misccharges;
     }
 
-    public void setMisc_charges(double misc_charges) {
-        this.misc_charges = misc_charges;
+    public void setMisccharges(double misccharges) {
+        this.misccharges = misccharges;
     }
 
-    public Calendar getPay_date() {
-        return pay_date;
+    public Calendar getPaydate() {
+        return paydate;
     }
 
-    public void setPay_date(Calendar pay_date) {
-        this.pay_date = pay_date;
+    public void setPaydate(Calendar paydate) {
+        this.paydate = paydate;
     }
 
 }

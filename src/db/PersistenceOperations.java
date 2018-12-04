@@ -15,12 +15,12 @@ public class PersistenceOperations {
         em = emf.createEntityManager();
     }
 
-    public void addBilling(double initial_charges, double misc_charges, Calendar pay_date) {
+    public void addBilling(double initialcharges, double misccharges, Calendar paydate) {
         em.getTransaction().begin();
         Billing b = new Billing();
-        b.setInitial_charges(initial_charges);
-        b.setMisc_charges(misc_charges);
-        b.setPay_date(pay_date);
+        b.setInitialcharges(initialcharges);
+        b.setMisccharges(misccharges);
+        b.setPaydate(paydate);
         em.persist(b);
         em.getTransaction().commit();
     }
