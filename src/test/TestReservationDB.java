@@ -52,7 +52,7 @@ public class TestReservationDB {
             System.out.println("");
 
             System.out.println("CREATE:");
-            System.out.println("Please press 1 to create a reservation"); // handles billing, guest, reservation
+            System.out.println("Please press 1 to create a reservation"); //daria
             System.out.println("");
 
             System.out.println("READ:");
@@ -85,38 +85,37 @@ public class TestReservationDB {
 
             switch (input) {
                 case "1":
-                    // addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
-                    System.out.println("Enter Checkin Date (2018 01 30):");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
+                    System.out.println("Enter Checkin Date (DD-MMM-YY):");
+                    input = sc.nextLine();
+                    while (input == null) {
                         System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
+                        input = sc.nextLine();
                     }
-                    String[] parts = input.split(" ");
+                    String[] parts = input.split("-");
                     Calendar checkinDate = new GregorianCalendar(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
 
-                    System.out.println("Enter Checkout Date (2018 01 30):");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
+                    System.out.println("Enter Checkout Date (DD-MMM-YY):");
+                    input = sc.nextLine();
+                    while (input == null) {
                         System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
+                        input = sc.nextLine();
                     }
-                    parts = input.split(" ");
+                    parts = input.split("-");
                     Calendar checkoutDate = new GregorianCalendar(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
 
                     System.out.println("Enter how many adults:");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
+                    input = sc.nextLine();
+                    while (input == null) {
                         System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
+                        input = sc.nextLine();
                     }
                     int adults = Integer.parseInt(input);
 
                     System.out.println("Enter how many children:");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
+                    input = sc.nextLine();
+                    while (input == null) {
                         System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
+                        input = sc.nextLine();
                     }
                     int child = Integer.parseInt(input);
 
@@ -128,44 +127,14 @@ public class TestReservationDB {
                     po.viewGuest();
                     break;
                 case "3":
-                    // addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
-                    System.out.println("Enter Checkin Date (2018 01 30):");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
+                    System.out.println("Enter Checkin Date (DD-MMM-YY):");
+                    input = sc.nextLine();
+                    while (input == null) {
                         System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
+                        input = sc.nextLine();
                     }
-                    String[] partss = input.split(" ");
-                    Calendar checkinDates = new GregorianCalendar(Integer.parseInt(partss[0]), Integer.parseInt(partss[1]), Integer.parseInt(partss[2]));
 
-                    System.out.println("Enter Checkout Date (2018 01 30):");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
-                        System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
-                    }
-                    partss = input.split(" ");
-                    Calendar checkoutDates = new GregorianCalendar(Integer.parseInt(partss[0]), Integer.parseInt(partss[1]), Integer.parseInt(partss[2]));
-
-                    System.out.println("Enter how many adults:");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
-                        System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
-                    }
-                    int adultss = Integer.parseInt(input);
-
-                    System.out.println("Enter how many children:");
-                    input = stdin.readLine();
-                    while (input == null) { //TODO: add more checks for error catching
-                        System.out.println("Invalid Input try again!");
-                        input = stdin.readLine();
-                    }
-                    int childs = Integer.parseInt(input);
-
-                    Calendar reservationDates = Calendar.getInstance();
-
-                    po.addReservation(checkinDates, checkoutDates, adultss, childs, reservationDates);
+                    po.viewGuestReservationsDate(input);
                     break;
                 case "4":
                     System.out.println("Please input the guest id you want to view the reservations made for.");
@@ -178,7 +147,7 @@ public class TestReservationDB {
                     break;
                 case "6":
                     System.out.println("Enter your reservation date:");
-                    input = stdin.readLine();
+                    input = sc.nextLine();
                     ro.dropReservationTable();
                     break;
                 case "7":
@@ -234,14 +203,12 @@ public class TestReservationDB {
                         }
                     }
 
-                    Date date = new Date(); 
+                    Date date = new Date();
                     final Calendar cal = Calendar.getInstance();
                     cal.setTime(date);
 
                     po.updateBilling(bid, input, initialcharges, misccharges, cal);
-                    
-                    
-                    
+
                     break;
                 case "9":
 

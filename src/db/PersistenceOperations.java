@@ -2,6 +2,7 @@ package db;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import javax.persistence.*;
 import model.*;
@@ -115,6 +116,23 @@ public class PersistenceOperations {
         em.getTransaction().commit();
     }
 
+    public void viewGuestReservationsDate(String date) {
+        System.out.println("debug: " + date);
+        em.getTransaction().begin();
+
+        String sq2 = "SELECT r FROM Reservation r WHERE r.cidate = CAST('" + date + "' AS date) order by r.cidate";
+        
+        TypedQuery<Reservation> query = em.createQuery(sq2,Reservation.class);
+        List<Reservation> results = query.getResultList();
+
+        for (Reservation r : results) {
+            System.out.println(r);
+        }
+
+        em.getTransaction().commit();
+
+    }
+
     public void deleteReservation(int rid, int gid) {
         Reservation r = em.find(Reservation.class, rid);
         Guest g = em.find(Guest.class, gid);
@@ -141,7 +159,6 @@ public class PersistenceOperations {
         }
         return g;
     }
-
 
     public void deleteGuest(int gid) {
         em.getTransaction().begin();
@@ -172,7 +189,7 @@ public class PersistenceOperations {
         emf.close();
     }
 
-     public void viewGuestBillings(int id) {
+    public void viewGuestBillings(int id) {
         em.getTransaction().begin();
         Guest g = em.find(Guest.class, id);
         if (g == null) {
@@ -182,8 +199,8 @@ public class PersistenceOperations {
         }
         em.getTransaction().commit();
     }
-    
-       public void updateBilling(int bid, String name, double initialcharges, double misccharges, Calendar date) {
+
+    public void updateBilling(int bid, String name, double initialcharges, double misccharges, Calendar date) {
         em.getTransaction().begin();
         Billing b = em.find(Billing.class, bid);
         b.setInitialcharges(initialcharges);
@@ -192,10 +209,5 @@ public class PersistenceOperations {
         em.getTransaction().commit();
         System.out.println("Billing updated.");
     }
-    
-    
-    
-    
-    
-    
+
 }
