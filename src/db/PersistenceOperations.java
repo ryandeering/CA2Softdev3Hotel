@@ -1,5 +1,6 @@
 package db;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -15,6 +16,17 @@ public class PersistenceOperations {
     public PersistenceOperations() {
         emf = Persistence.createEntityManagerFactory("CA2Softdev3HotelPU");
         em = emf.createEntityManager();
+    }
+
+    public void updateReservation(int id, String cidate, String codate, int numofAdults, int numofChildren, String reservationDate) {
+
+        // Create a string with an UPDATE statement. UPDATE <entity_name> <identification_variable> SET <identification_variable>.<state_field> = <value> WHERE <condition>
+        String sqlStatement = "UPDATE Reservation r SET  r.cidate= CAST('" + cidate + "' AS date) , r.codate=CAST('" + codate 
+            + "' AS date) , r.numofAdults='" + numofAdults + "' , r.numofChildren='" + numofChildren + "', r.reservationDate= CAST('" + reservationDate + "' AS date) WHERE r.rid ='" + id + "'";
+
+        TypedQuery<Reservation> query = em.createQuery(sqlStatement, Reservation.class);
+        System.out.println(" row updated in the table.");
+
     }
 
     public void addBilling(double initialcharges, double misccharges, Calendar paydate) {
@@ -94,8 +106,35 @@ public class PersistenceOperations {
         em.getTransaction().begin();
 
         TypedQuery<Room> query
-                = em.createQuery("SELECT ro FROM Room ro order by ro.roid",
-                        Room.class);
+                = em.createQuery("SELECT ro FROM Room ro order by ro.roid", Room.class);
+        List<Room> results = query.getResultList();
+
+        for (Room ro : results) {
+            System.out.println(ro);
+        }
+        em.getTransaction().commit();
+
+    }
+
+    public void viewRoomTaken() {
+        em.getTransaction().begin();
+
+        TypedQuery<Room> query
+                = em.createQuery("SELECT ro FROM Room ro WHERE ro.order by ro.roid", Room.class);
+        List<Room> results = query.getResultList();
+
+        for (Room ro : results) {
+            //findReservation(int rid);
+            System.out.println(ro);
+        }
+        em.getTransaction().commit();
+    }
+
+    public void viewRoomNotTaken() {
+        em.getTransaction().begin();
+
+        TypedQuery<Room> query
+                = em.createQuery("SELECT ro FROM Room ro order by ro.roid", Room.class);
         List<Room> results = query.getResultList();
 
         for (Room ro : results) {
@@ -121,8 +160,8 @@ public class PersistenceOperations {
         em.getTransaction().begin();
 
         String sq2 = "SELECT r FROM Reservation r WHERE r.cidate = CAST('" + date + "' AS date) order by r.cidate";
-        
-        TypedQuery<Reservation> query = em.createQuery(sq2,Reservation.class);
+
+        TypedQuery<Reservation> query = em.createQuery(sq2, Reservation.class);
         List<Reservation> results = query.getResultList();
 
         for (Reservation r : results) {

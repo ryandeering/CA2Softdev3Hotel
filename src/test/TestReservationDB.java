@@ -85,7 +85,7 @@ public class TestReservationDB {
 
             switch (input) {
                 case "1":
-                    System.out.println("Enter Checkin Date (DD-MMM-YY):");
+                    System.out.println("Enter Checkin Date (DD-MM-YY):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
@@ -94,7 +94,7 @@ public class TestReservationDB {
                     String[] parts = input.split("-");
                     Calendar checkinDate = new GregorianCalendar(Integer.parseInt(parts[0]), Integer.parseInt(parts[1]), Integer.parseInt(parts[2]));
 
-                    System.out.println("Enter Checkout Date (DD-MMM-YY):");
+                    System.out.println("Enter Checkout Date (DD-MM-YY):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
@@ -127,7 +127,7 @@ public class TestReservationDB {
                     po.viewGuest();
                     break;
                 case "3":
-                    System.out.println("Enter Checkin Date (DD-MMM-YY):");
+                    System.out.println("Enter Checkin Date (DD-MM-YY):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
@@ -143,13 +143,68 @@ public class TestReservationDB {
                     po.viewGuestReservations(id);
                     break;
                 case "5":
+                    System.out.println("<======= All =======>");
                     po.viewRoom();
+                    System.out.println("<====== Taken ======>");
+                    po.viewRoomTaken();
+                    System.out.println("<==== Not Taken ====>");
+                    po.viewRoomNotTaken();
                     break;
                 case "6":
-                    System.out.println("Enter your reservation date:");
+                    
+                     
+                    System.out.println("Enter Updated Checkin Date (DD-MMM-YY):");
                     input = sc.nextLine();
-                    ro.dropReservationTable();
-                    break;
+                    while (input == null) {
+                        System.out.println("Invalid Input try again!");
+                        input = sc.nextLine();
+                    }
+                    ;
+                    String checkinDate3 = input;
+
+                    System.out.println("Enter Updated Checkout Date (DD-MMM-YY):");
+                    input = sc.nextLine();
+                    while (input == null) {
+                        System.out.println("Invalid Input try again!");
+                        input = sc.nextLine();
+                    }
+                   
+                    String checkoutDate3 = input;
+
+                    System.out.println("Enter how many adults:");
+                    input = sc.nextLine();
+                    while (input == null) {
+                        System.out.println("Invalid Input try again!");
+                        input = sc.nextLine();
+                    }
+                    int adults3 = Integer.parseInt(input);
+
+                    System.out.println("Enter how many children:");
+                    input = sc.nextLine();
+                    while (input == null) {
+                        System.out.println("Invalid Input try again!");
+                        input = sc.nextLine();
+                    }
+                        int child3 = Integer.parseInt(input);
+                    
+
+                        System.out.println("Enter Updated Reservation Date (DD-MMM-YY):");
+                        input = sc.nextLine();
+                        while (input == null) {
+                            System.out.println("Invalid Input try again!");
+                            input = sc.nextLine();
+                        }
+                        
+                        
+                        String reservationDate3 = input;
+                        
+                        
+                        System.out.println("Enter your reservation id:");
+                        int rid3 = sc.nextInt();
+
+                        po.updateReservation(rid3, checkinDate3, checkoutDate3, adults3, child3, reservationDate3);
+                        
+                        break;                   
                 case "7":
                     po.viewBilling();
                     break;
@@ -270,5 +325,5 @@ public class TestReservationDB {
 
         }
         ro.closeDB();
+        }
     }
-}
