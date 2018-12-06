@@ -50,7 +50,6 @@ public class TestReservationDB {
         boolean quit = false;
         while (!quit) {
             System.out.println("");
-
             System.out.println("CREATE:");
             System.out.println("Please press 1 to create a reservation"); //daria
             System.out.println("");
@@ -59,7 +58,7 @@ public class TestReservationDB {
             System.out.println("Please press 2 to see who is currently staying in the hotel."); // daria 
             System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); //daria 
             System.out.println("Please press 4 to display reservation details for a guest"); //daria 
-            System.out.println("Please press 5 to display rooms (all, taken, not taken)"); //daria 
+            System.out.println("Please press 5 to display all rooms"); //daria 
             System.out.println("");
 
             System.out.println("UPDATE:");
@@ -70,8 +69,7 @@ public class TestReservationDB {
 
             System.out.println("DELETE:");
             System.out.println("Please press 9 to delete a reservation"); //ryan
-            System.out.println("Please press 10 to delete a guest from the records."); // ryan
-            // delete billing method might be unnecessary
+            System.out.println("Please press 10 to delete a guest from the records."); // ryan            
             System.out.println("Press 11 to quit");
 
             String input = stdin.readLine();
@@ -120,12 +118,13 @@ public class TestReservationDB {
                     int child = Integer.parseInt(input);
 
                     Calendar reservationDate = Calendar.getInstance();
-
                     po.addReservation(checkinDate, checkoutDate, adults, child, reservationDate);
                     break;
+                    
                 case "2":
                     po.viewGuest();
                     break;
+                    
                 case "3":
                     System.out.println("Enter Checkin Date (DD-MM-YY):");
                     input = sc.nextLine();
@@ -133,15 +132,16 @@ public class TestReservationDB {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
                     }
-
-                    po.viewGuestReservationsDate(input);
+                    po.viewGuestReservationsDate(input);                    
                     break;
+                    
                 case "4":
                     System.out.println("Please input the guest id you want to view the reservations made for.");
                     int id = sc.nextInt();
                     sc.nextLine();
                     po.viewGuestReservations(id);
                     break;
+                    
                 case "5":
                     System.out.println("<======= All =======>");
                     po.viewRoom();
@@ -150,16 +150,14 @@ public class TestReservationDB {
                     System.out.println("<==== Not Taken ====>");
                     po.viewRoomNotTaken();
                     break;
-                case "6":
                     
-                     
+                case "6":
                     System.out.println("Enter Updated Checkin Date (DD-MMM-YY):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
                     }
-                    ;
                     String checkinDate3 = input;
 
                     System.out.println("Enter Updated Checkout Date (DD-MMM-YY):");
@@ -168,7 +166,6 @@ public class TestReservationDB {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
                     }
-                   
                     String checkoutDate3 = input;
 
                     System.out.println("Enter how many adults:");
@@ -185,29 +182,25 @@ public class TestReservationDB {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
                     }
-                        int child3 = Integer.parseInt(input);
-                    
+                    int child3 = Integer.parseInt(input);
 
-                        System.out.println("Enter Updated Reservation Date (DD-MMM-YY):");
+                    System.out.println("Enter Updated Reservation Date (DD-MMM-YY):");
+                    input = sc.nextLine();
+                    while (input == null) {
+                        System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
-                        while (input == null) {
-                            System.out.println("Invalid Input try again!");
-                            input = sc.nextLine();
-                        }
-                        
-                        
-                        String reservationDate3 = input;
-                        
-                        
-                        System.out.println("Enter your reservation id:");
-                        int rid3 = sc.nextInt();
+                    }
+                    String reservationDate3 = input;
 
-                        po.updateReservation(rid3, checkinDate3, checkoutDate3, adults3, child3, reservationDate3);
-                        
-                        break;                   
+                    System.out.println("Enter your reservation id:");
+                    int rid3 = sc.nextInt();
+                    po.updateReservation(rid3, checkinDate3, checkoutDate3, adults3, child3, reservationDate3);
+                    break;
+                    
                 case "7":
                     po.viewBilling();
                     break;
+                    
                 case "8":
                     System.out.println("Please enter the id of the guest who's billing you want to update");
                     int gid;
@@ -219,7 +212,6 @@ public class TestReservationDB {
                             System.out.print("Enter a valid numerical value: ");
                         }
                     }
-
                     po.viewGuestBillings(gid);
                     System.out.println("");
 
@@ -235,7 +227,6 @@ public class TestReservationDB {
                     }
 
                     System.out.println("Enter the new initial charges. This will overwrite the value printed.");
-
                     double initialcharges;
                     while (true) {
                         try {
@@ -247,7 +238,6 @@ public class TestReservationDB {
                     }
 
                     System.out.println("Enter the new misc charges. This will overwrite the value printed.");
-
                     double misccharges;
                     while (true) {
                         try {
@@ -261,14 +251,11 @@ public class TestReservationDB {
                     Date date = new Date();
                     final Calendar cal = Calendar.getInstance();
                     cal.setTime(date);
-
                     po.updateBilling(bid, input, initialcharges, misccharges, cal);
-
                     break;
+                    
                 case "9":
-
                     System.out.println("Please enter the id of the guest who's reservation you want to delete");
-
                     while (true) {
                         try {
                             gid = Integer.parseInt(sc.nextLine());
@@ -294,7 +281,6 @@ public class TestReservationDB {
                         po.deleteReservation(rid, gid);
                         System.out.println("Reservation deleted.");
                     }
-
                     break;
 
                 case "10":
@@ -313,11 +299,12 @@ public class TestReservationDB {
                         po.deleteGuest(gid);
                         System.out.println("Guest deleted.");
                     }
-
                     break;
+                    
                 case "11":
                     quit = true;
                     break;
+                    
                 default:
                     System.out.println("Error! Invalid command");
                     break;
@@ -325,5 +312,5 @@ public class TestReservationDB {
 
         }
         ro.closeDB();
-        }
     }
+}
