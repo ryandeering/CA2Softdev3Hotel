@@ -142,23 +142,18 @@ public class PersistenceOperations {
         return g;
     }
 
-    // public void deleteGuest(int gid) {
-    //     Guest g = em.find(Guest.class, gid);
-    //     em.getTransaction().begin();
-    //     em.remove(g);
-    //     em.getTransaction().commit();
-    // }
+
     public void deleteGuest(int gid) {
         em.getTransaction().begin();
 
-        String sq1 = "SELECT b FROM Billing b WHERE gid = " + gid;
+        String sq1 = "SELECT b FROM Billing b WHERE b.gid = " + gid;
 
         List<Billing> bb = em.createQuery(sq1).getResultList();
         for (Billing b : bb) {
             em.remove(b);
         }
 
-        String sq2 = "SELECT r FROM Reservation r WHERE gid = " + gid;
+        String sq2 = "SELECT r FROM Reservation r WHERE r.gid = " + gid;
 
         List<Reservation> rr = em.createQuery(sq2).getResultList();
         for (Reservation r : rr) {
@@ -177,4 +172,30 @@ public class PersistenceOperations {
         emf.close();
     }
 
+     public void viewGuestBillings(int id) {
+        em.getTransaction().begin();
+        Guest g = em.find(Guest.class, id);
+        if (g == null) {
+            System.out.println("Guest does not exist, please try again!");
+        } else {
+            g.printBillings();
+        }
+        em.getTransaction().commit();
+    }
+    
+       public void updateBilling(int bid, String name, double initialcharges, double misccharges, Calendar date) {
+        em.getTransaction().begin();
+        Billing b = em.find(Billing.class, bid);
+        b.setInitialcharges(initialcharges);
+        b.setMisccharges(misccharges);
+        b.setPaydate(date);
+        em.getTransaction().commit();
+        System.out.println("Billing updated.");
+    }
+    
+    
+    
+    
+    
+    
 }

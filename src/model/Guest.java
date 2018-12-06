@@ -89,6 +89,16 @@ public class Guest {
         }
 
     }
+    
+        public void printBillings() {
+        System.out.println("Billings for: " + fname + " " + lname);
+        for (int i = 0; i < blist.size(); i++) {
+            System.out.println(blist.get(i));
+        }
+
+    }
+    
+    
 
     public List<Reservation> getRlist() {
         return rlist;

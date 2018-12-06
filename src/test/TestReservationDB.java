@@ -185,16 +185,73 @@ public class TestReservationDB {
                     po.viewBilling();
                     break;
                 case "8":
-                    break;
-                case "9":
-
-                    System.out.println("Please enter the id of the guest who's reservation you want to delete");
+                    System.out.println("Please enter the id of the guest who's billing you want to update");
                     int gid;
                     while (true) {
                         try {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    po.viewGuestBillings(gid);
+                    System.out.println("");
+
+                    System.out.println("Please enter the id of the billing you want to update.");
+                    int bid;
+                    while (true) {
+                        try {
+                            bid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    System.out.println("Enter the new initial charges. This will overwrite the value printed.");
+
+                    double initialcharges;
+                    while (true) {
+                        try {
+                            initialcharges = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    System.out.println("Enter the new misc charges. This will overwrite the value printed.");
+
+                    double misccharges;
+                    while (true) {
+                        try {
+                            misccharges = Double.parseDouble(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    Date date = new Date(); 
+                    final Calendar cal = Calendar.getInstance();
+                    cal.setTime(date);
+
+                    po.updateBilling(bid, input, initialcharges, misccharges, cal);
+                    
+                    
+                    
+                    break;
+                case "9":
+
+                    System.out.println("Please enter the id of the guest who's reservation you want to delete");
+
+                    while (true) {
+                        try {
+                            gid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
                             System.out.print("Enter a valid numerical value: ");
                         }
                     }
@@ -224,7 +281,7 @@ public class TestReservationDB {
                         try {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
-                        } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
+                        } catch (NumberFormatException nfe) {
                             System.out.print("Enter a valid numerical value: ");
                         }
                     }
