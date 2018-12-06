@@ -197,27 +197,15 @@ public class PersistenceOperations {
     }
 
     public void deleteGuest(int gid) {
+
+        Guest g = em.find(Guest.class, gid);
+
         em.getTransaction().begin();
 
-        String sq1 = "SELECT b FROM Billing b WHERE b.gid = " + gid;
+        em.remove(g);
 
-        List<Billing> bb = em.createQuery(sq1).getResultList();
-        for (Billing b : bb) {
-            em.remove(b);
-        }
-
-        String sq2 = "SELECT r FROM Reservation r WHERE r.gid = " + gid;
-
-        List<Reservation> rr = em.createQuery(sq2).getResultList();
-        for (Reservation r : rr) {
-            em.remove(r);
-        }
-
-        int deletedCount = em.createQuery("DELETE FROM "
-                + "Guest g WHERE g.gid = " + gid).executeUpdate();
-
-        System.out.println("entity removed");
         em.getTransaction().commit();
+
     }
 
     public void close() {

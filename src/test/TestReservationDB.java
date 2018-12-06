@@ -60,7 +60,7 @@ public class TestReservationDB {
             System.out.println("Please press 3 to see who is currently staying in the hotel."); // daria  todo
             System.out.println("Please press 4 to see who stayed in the hotel on a specified date."); //daria todo
             System.out.println("Please press 5 to display reservation details for a guest"); //daria done
-            System.out.println("Please press 6 to display all rooms"); //done
+            System.out.println("Please press 6 to display all rooms"); //
             System.out.println("");
 
             System.out.println("UPDATE:");
@@ -217,7 +217,7 @@ public class TestReservationDB {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid id or numerical value: ");
                         }
                     }
 
@@ -253,7 +253,7 @@ public class TestReservationDB {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid guest id or numerical value: ");
                         }
                     }
 
@@ -267,7 +267,7 @@ public class TestReservationDB {
                             bid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) {
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid billing id or numerical value: ");
                         }
                     }
 
@@ -311,7 +311,7 @@ public class TestReservationDB {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) {
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid guest number or numerical value: ");
                         }
                     }
 
@@ -322,7 +322,7 @@ public class TestReservationDB {
                             rid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) {
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid reservation number or numerical value: ");
                         }
                     }
 
@@ -341,7 +341,7 @@ public class TestReservationDB {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) {
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid guest number or numerical value: ");
                         }
                     }
 
