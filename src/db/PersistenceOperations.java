@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 import javax.persistence.*;
 import model.*;
+import java.util.GregorianCalendar;
 
 public class PersistenceOperations {
 
@@ -203,4 +204,20 @@ public class PersistenceOperations {
         System.out.println("Guest updated.");
     }
 
+    
+      public void viewGuestReservationsDate(String date) {
+        System.out.println("debug: " + date);
+        em.getTransaction().begin();
+         String sq2 = "SELECT r FROM Reservation r WHERE r.cidate = CAST('" + date + "' AS date) order by r.cidate";
+        
+        TypedQuery<Reservation> query = em.createQuery(sq2,Reservation.class);
+        List<Reservation> results = query.getResultList();
+         for (Reservation r : results) {
+            System.out.println(r);
+        }
+         em.getTransaction().commit();
+     }
+    
+    
+    
 }
