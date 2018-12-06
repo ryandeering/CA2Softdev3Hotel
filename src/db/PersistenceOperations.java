@@ -142,7 +142,6 @@ public class PersistenceOperations {
         return g;
     }
 
-
     public void deleteGuest(int gid) {
         em.getTransaction().begin();
 
@@ -172,7 +171,7 @@ public class PersistenceOperations {
         emf.close();
     }
 
-     public void viewGuestBillings(int id) {
+    public void viewGuestBillings(int id) {
         em.getTransaction().begin();
         Guest g = em.find(Guest.class, id);
         if (g == null) {
@@ -182,8 +181,8 @@ public class PersistenceOperations {
         }
         em.getTransaction().commit();
     }
-    
-       public void updateBilling(int bid, String name, double initialcharges, double misccharges, Calendar date) {
+
+    public void updateBilling(int bid, String name, double initialcharges, double misccharges, Calendar date) {
         em.getTransaction().begin();
         Billing b = em.find(Billing.class, bid);
         b.setInitialcharges(initialcharges);
@@ -192,10 +191,16 @@ public class PersistenceOperations {
         em.getTransaction().commit();
         System.out.println("Billing updated.");
     }
-    
-    
-    
-    
-    
-    
+
+    public void updateGuest(int gid, String fname, String lname, String email, String phonenum) {
+        em.getTransaction().begin();
+        Guest g = em.find(Guest.class, gid);
+        g.setfname(fname);
+        g.setlname(lname);
+        g.setemail(email);
+        g.setphonenum(phonenum);
+        em.getTransaction().commit();
+        System.out.println("Guest updated.");
+    }
+
 }

@@ -71,7 +71,6 @@ public class TestReservationDB {
             System.out.println("DELETE:");
             System.out.println("Please press 9 to delete a reservation"); //ryan
             System.out.println("Please press 10 to delete a guest from the records."); // ryan
-            // delete billing method might be unnecessary
             System.out.println("Press 11 to quit");
 
             String input = stdin.readLine();
@@ -182,11 +181,44 @@ public class TestReservationDB {
                     ro.dropReservationTable();
                     break;
                 case "7":
-                    po.viewBilling();
+                    System.out.println("Please enter the id of the guest who's details you want to update.");
+                    int gid;
+                    while (true) {
+                        try {
+                            gid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    Guest gg = po.findGuest(gid);
+
+                    if (gg != null) {
+
+                        System.out.println(po.findGuest(gid));
+
+                        System.out.println("Input new first name.");
+                        String fname = sc.nextLine();
+
+                        System.out.println("Input new last name.");
+                        String lname = sc.nextLine();
+
+                        System.out.println("Input new email.");
+                        String email = sc.nextLine();
+
+                        System.out.println("Input new phone number.");
+                        String phonenum = sc.nextLine();
+
+                        po.updateGuest(gid, fname, lname, email, phonenum);
+                    } else {
+                        System.out.println("Please try again.");
+                    }
+
                     break;
                 case "8":
                     System.out.println("Please enter the id of the guest who's billing you want to update");
-                    int gid;
+
                     while (true) {
                         try {
                             gid = Integer.parseInt(sc.nextLine());
@@ -234,14 +266,12 @@ public class TestReservationDB {
                         }
                     }
 
-                    Date date = new Date(); 
+                    Date date = new Date();
                     final Calendar cal = Calendar.getInstance();
                     cal.setTime(date);
 
                     po.updateBilling(bid, input, initialcharges, misccharges, cal);
-                    
-                    
-                    
+
                     break;
                 case "9":
 
