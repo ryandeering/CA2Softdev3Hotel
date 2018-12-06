@@ -10,6 +10,12 @@ import java.io.InputStreamReader;
 import java.util.Objects;
 import java.util.GregorianCalendar;
 
+// Software Development 3
+// CA2
+// Hotel Management System
+// X00144631 Ryan Deering
+// X00145914 Daria Denisiuk
+// Made entirely through github: https://github.com/ryandeering/CA2Softdev3Hotel
 public class TestReservationDB {
 
     public static void main(String[] args) throws IOException {
@@ -24,30 +30,15 @@ public class TestReservationDB {
 
         ro.openDB();
 
-        ro.dropGuestSequence();
-        ro.dropBillingSequence();
-        ro.dropRoomSequence();
-        ro.dropReservationSequence();
+        ro.dropSequences(); // nice and tidy!
 
-        ro.dropGuestTable();
-        ro.dropBillingTable();
-        ro.dropRoomTable();
-        ro.dropReservationTable();
+        ro.dropTables();
 
-        ro.createGuesttable();
-        ro.createBillingtable();
-        ro.createRoomtable();
-        ro.createReservationtable();
+        ro.createTables();
 
-        ro.createGuestSequence();
-        ro.createBillingSequence();
-        ro.createReservationSequence();
-        ro.createRoomSequence();
+        ro.createSequences();
 
-        ro.fillGuestTable();
-        ro.fillBillingTable();
-        ro.fillRoomTable();
-        ro.fillReservationTable();
+        ro.fillTables();
 
         System.out.println("");
         System.out.println("");
@@ -59,24 +50,24 @@ public class TestReservationDB {
         boolean quit = false;
         while (!quit) {
             System.out.println("");
-            System.out.println("");
+
             System.out.println("CREATE:");
             System.out.println("Please press 1 to create a reservation"); // handles billing, guest, reservation
             System.out.println("");
-            System.out.println("");
+
             System.out.println("READ:");
             System.out.println("Please press 2 to see who is currently staying in the hotel."); // daria 
             System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); //daria 
             System.out.println("Please press 4 to display reservation details for a guest"); //daria 
             System.out.println("Please press 5 to display rooms (all, taken, not taken)"); //daria 
             System.out.println("");
-            System.out.println("");
+
             System.out.println("UPDATE:");
             System.out.println("Please press 6 to update reservation details"); // daria 
             System.out.println("Please press 7 to update guest details"); // ryan
             System.out.println("Please press 8 to update a guest's billing details."); // ryan
             System.out.println("");
-            System.out.println("");
+
             System.out.println("DELETE:");
             System.out.println("Please press 9 to delete a reservation"); //ryan
             System.out.println("Please press 10 to delete a guest from the records."); // ryan
@@ -134,7 +125,7 @@ public class TestReservationDB {
                     po.addReservation(checkinDate, checkoutDate, adults, child, reservationDate);
                     break;
                 case "2":
-                    po.viewGuest();                    
+                    po.viewGuest();
                     break;
                 case "3":
                     // addReservation(Calendar checkinDate, Calendar checkoutDate, int numofAdults, int numofChildren, Calendar reservationDate) {
@@ -192,6 +183,58 @@ public class TestReservationDB {
                     break;
                 case "7":
                     po.viewBilling();
+                    break;
+                case "8":
+                    break;
+                case "9":
+
+                    System.out.println("Please enter the id of the guest who's reservation you want to delete");
+                    int gid;
+                    while (true) {
+                        try {
+                            gid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    System.out.println("Please enter the id of the reservation you wish to delete");
+                    int rid;
+                    while (true) {
+                        try {
+                            rid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) {
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    Reservation r = po.findReservation(rid);
+                    if (r != null) {
+                        po.deleteReservation(rid, gid);
+                        System.out.println("Reservation deleted.");
+                    }
+
+                    break;
+
+                case "10":
+                    System.out.println("Please enter the id of the guest who's id you want to delete.");
+                    while (true) {
+                        try {
+                            gid = Integer.parseInt(sc.nextLine());
+                            break;
+                        } catch (NumberFormatException nfe) { // you can learn a thing or two about exception handling, even if it is only by osmosis! - rd
+                            System.out.print("Enter a valid numerical value: ");
+                        }
+                    }
+
+                    Guest g = po.findGuest(gid);
+                    if (g != null) {
+                        po.deleteGuest(gid);
+                        System.out.println("Guest deleted.");
+                    }
+
                     break;
                 case "11":
                     quit = true;

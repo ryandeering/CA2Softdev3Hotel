@@ -106,9 +106,11 @@ public class Reservation {
                 + " Reservation Date: " + dateFormat(reservationDate));
     }
 
-    public String dateFormat(Calendar date) { // would it even be programming if you weren't doing stupid hacks?
+    public String dateFormat(Calendar date) { // would it even be programming if you weren't doing stupid hacks? - rd
         String s = String.format("%1$td %1$tb %1$tY", date);
         return s;
     }
+
+
 
 }

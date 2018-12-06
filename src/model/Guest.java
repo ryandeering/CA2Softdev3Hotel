@@ -19,10 +19,10 @@ public class Guest {
     private String email;
     private String phonenum;
 
-    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> rlist = new ArrayList<>();
 
-    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "gst", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Billing> blist = new ArrayList<>();
 
     public Guest() {
@@ -81,15 +81,21 @@ public class Guest {
 
         return s;
     }
-    
-     public void printReservations(){
-        System.out.println("Reservations for: "+ fname + " " + lname);
+
+    public void printReservations() {
+        System.out.println("Reservations for: " + fname + " " + lname);
         for (int i = 0; i < rlist.size(); i++) {
             System.out.println(rlist.get(i));
         }
 
     }
 
+    public List<Reservation> getRlist() {
+        return rlist;
+    }
+
+    public List<Billing> getBlist() {
+        return blist;
+    }
+
 }
-
-

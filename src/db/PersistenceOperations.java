@@ -1,5 +1,6 @@
 package db;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import javax.persistence.*;
@@ -36,9 +37,9 @@ public class PersistenceOperations {
         em.getTransaction().commit();
     }
 
-      public void addReservation(Calendar cidate, Calendar codate, int numofAdults, int numofChildren, Calendar reservationDate) {
+    public void addReservation(Calendar cidate, Calendar codate, int numofAdults, int numofChildren, Calendar reservationDate) {
         em.getTransaction().begin();
-        Reservation r = new Reservation(cidate,codate,numofAdults,numofChildren,reservationDate);
+        Reservation r = new Reservation(cidate, codate, numofAdults, numofChildren, reservationDate);
         em.persist(r);
         em.getTransaction().commit();
     }
@@ -102,18 +103,74 @@ public class PersistenceOperations {
         em.getTransaction().commit();
 
     }
-    
-    public void viewGuestReservations(int id){
-    em.getTransaction().begin();
-    Guest g = em.find(Guest.class, id);
-    if(g==null){
-        System.out.println("Guest does not exist, please try again!");
-    } else {
-        g.printReservations();
+
+    public void viewGuestReservations(int id) {
+        em.getTransaction().begin();
+        Guest g = em.find(Guest.class, id);
+        if (g == null) {
+            System.out.println("Guest does not exist, please try again!");
+        } else {
+            g.printReservations();
+        }
+        em.getTransaction().commit();
     }
-    em.getTransaction().commit();
-}
-    
+
+    public void deleteReservation(int rid, int gid) {
+        Reservation r = em.find(Reservation.class, rid);
+        Guest g = em.find(Guest.class, gid);
+        em.getTransaction().begin();
+        em.remove(r);
+        g.getRlist().remove(r);
+        em.getTransaction().commit();
+        System.out.println("Reservation deleted.");
+
+    }
+
+    public Reservation findReservation(int rid) {
+        Reservation r = em.find(Reservation.class, rid);
+        if (r == null) {
+            System.out.println("Reservation not found. Please enter only valid values.");
+        }
+        return r;
+    }
+
+    public Guest findGuest(int gid) {
+        Guest g = em.find(Guest.class, gid);
+        if (g == null) {
+            System.out.println("Guest not found. Please enter only valid values.");
+        }
+        return g;
+    }
+
+    // public void deleteGuest(int gid) {
+    //     Guest g = em.find(Guest.class, gid);
+    //     em.getTransaction().begin();
+    //     em.remove(g);
+    //     em.getTransaction().commit();
+    // }
+    public void deleteGuest(int gid) {
+        em.getTransaction().begin();
+
+        String sq1 = "SELECT b FROM Billing b WHERE gid = " + gid;
+
+        List<Billing> bb = em.createQuery(sq1).getResultList();
+        for (Billing b : bb) {
+            em.remove(b);
+        }
+
+        String sq2 = "SELECT r FROM Reservation r WHERE gid = " + gid;
+
+        List<Reservation> rr = em.createQuery(sq2).getResultList();
+        for (Reservation r : rr) {
+            em.remove(r);
+        }
+
+        int deletedCount = em.createQuery("DELETE FROM "
+                + "Guest g WHERE g.gid = " + gid).executeUpdate();
+
+        System.out.println("entity removed");
+        em.getTransaction().commit();
+    }
 
     public void close() {
         em.close();
