@@ -53,26 +53,27 @@ public class TestReservationDB {
 
             System.out.println("CREATE:");
             System.out.println("Please press 1 to create a reservation"); // daria doneish, needs input for guest data
-            System.out.println("Please press 2 to check-in"); // this will create entry for billing, ryan                                         
+            System.out.println("Please press 2 to check-in"); // this will create entry for billing, ryan not done                                      
             System.out.println("");
 
             System.out.println("READ:");
             System.out.println("Please press 3 to see who is currently staying in the hotel."); // daria  todo
             System.out.println("Please press 4 to see who stayed in the hotel on a specified date."); //daria todo
             System.out.println("Please press 5 to display reservation details for a guest"); //daria done
-            System.out.println("Please press 6 to display all rooms"); //
+            System.out.println("Please press 6 to display all rooms"); // done
+            System.out.println("Please press 7 to display entire guest database.");
             System.out.println("");
 
             System.out.println("UPDATE:");
-            System.out.println("Please press 7 to update reservation details"); // daria done
-            System.out.println("Please press 8 to update guest details"); // ryan done
-            System.out.println("Please press 9 to update a guest's billing details."); // ryan done
+            System.out.println("Please press 8 to update reservation details"); // daria done
+            System.out.println("Please press 9 to update guest details"); // ryan done
+            System.out.println("Please press 10 to update a guest's billing details."); // ryan done
             System.out.println("");
 
             System.out.println("DELETE:");
-            System.out.println("Please press 10 to delete a reservation"); //ryan done
-            System.out.println("Please press 11 to delete a guest from the records."); // ryan not done
-            System.out.println("Press 11 to quit");
+            System.out.println("Please press 11 to delete a reservation"); //ryan done
+            System.out.println("Please press 12 to delete a guest from the records."); // ryan done
+            System.out.println("Press 13 to quit");
 
             String input = stdin.readLine();
             if (input == null) {
@@ -128,8 +129,8 @@ public class TestReservationDB {
                     break;
 
                 case "2":
-                  po.viewGuest();// placeholder NOT FINISHED
-                          break;
+                    po.viewGuest();// placeholder NOT FINISHED
+                    break;
 
                 case "3":
                     po.viewGuest(); //placeholder NOT FINISHED
@@ -164,7 +165,10 @@ public class TestReservationDB {
                     po.viewRoom();
 
                     break; // DONE
-                case "7": // DONE
+                    case "7":
+                  po.viewGuest();// placeholder NOT FINISHED
+                          break;
+                case "8": // DONE
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
@@ -209,7 +213,7 @@ public class TestReservationDB {
 
                     break;
 
-                case "8": // DONE 
+                case "9": // DONE 
                     System.out.println("Please enter the id of the guest who's details you want to update.");
                     int gid;
                     while (true) {
@@ -245,7 +249,7 @@ public class TestReservationDB {
                     }
 
                     break;
-                case "9": // DONE
+                case "10": // DONE
                     System.out.println("Please enter the id of the guest who's billing you want to update");
 
                     while (true) {
@@ -302,7 +306,7 @@ public class TestReservationDB {
                     po.updateBilling(bid, input, initialcharges, misccharges, cal);
 
                     break;
-                case "10": // DONE
+                case "11": // DONE
 
                     System.out.println("Please enter the id of the guest who's reservation you want to delete");
 
@@ -334,7 +338,7 @@ public class TestReservationDB {
 
                     break;
 
-                case "11": // NOT DONE
+                case "12": // DONE
                     System.out.println("Please enter the id of the guest who's id you want to delete.");
                     while (true) {
                         try {
@@ -352,7 +356,7 @@ public class TestReservationDB {
                     }
 
                     break;
-                case "12":
+                case "13":
                     quit = true;
                     break;
                 default:
