@@ -70,4 +70,11 @@ public class Room {
         this.rate = rate;
     }
 
+    @Override
+    public String toString() {
+        return "Room ID/Number: " + roid + "Tier: " + roomtier + "Number of beds: " + numofbeds + "Rate: " + rate;
+    }
+
+    
+    
 }

@@ -52,25 +52,26 @@ public class TestReservationDB {
             System.out.println("");
 
             System.out.println("CREATE:");
-            System.out.println("Please press 1 to create a reservation"); // daria
+            System.out.println("Please press 1 to create a reservation"); // daria doneish, needs input for guest data
+            System.out.println("Please press 2 to check-in"); // this will create entry for billing, ryan                                         
             System.out.println("");
 
             System.out.println("READ:");
-            System.out.println("Please press 2 to see who is currently staying in the hotel."); // daria 
-            System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); //daria 
-            System.out.println("Please press 4 to display reservation details for a guest"); //daria 
-            System.out.println("Please press 5 to display rooms (all, taken, not taken)"); //daria 
+            System.out.println("Please press 3 to see who is currently staying in the hotel."); // daria  todo
+            System.out.println("Please press 4 to see who stayed in the hotel on a specified date."); //daria todo
+            System.out.println("Please press 5 to display reservation details for a guest"); //daria done
+            System.out.println("Please press 6 to display all rooms"); //done
             System.out.println("");
 
             System.out.println("UPDATE:");
-            System.out.println("Please press 6 to update reservation details"); // daria 
-            System.out.println("Please press 7 to update guest details"); // ryan
-            System.out.println("Please press 8 to update a guest's billing details."); // ryan
+            System.out.println("Please press 7 to update reservation details"); // daria done
+            System.out.println("Please press 8 to update guest details"); // ryan done
+            System.out.println("Please press 9 to update a guest's billing details."); // ryan done
             System.out.println("");
 
             System.out.println("DELETE:");
-            System.out.println("Please press 9 to delete a reservation"); //ryan
-            System.out.println("Please press 10 to delete a guest from the records."); // ryan
+            System.out.println("Please press 10 to delete a reservation"); //ryan done
+            System.out.println("Please press 11 to delete a guest from the records."); // ryan not done
             System.out.println("Press 11 to quit");
 
             String input = stdin.readLine();
@@ -127,19 +128,23 @@ public class TestReservationDB {
                     break;
 
                 case "2":
-                    po.viewGuest();
-                    break;
+                  po.viewGuest();// placeholder NOT FINISHED
+                          break;
+
                 case "3":
+                    po.viewGuest(); //placeholder NOT FINISHED
+                    break;
+                case "4":
                     System.out.println("Enter Checkin Date (DD-MM-YY):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
-                    }
+                    } // NOT FINISHED
 
                     po.viewGuestReservationsDate(input);
                     break;
-                case "4":
+                case "5":
                     System.out.println("Please input the guest id you want to view the reservations made for.");
                     int id = sc.nextInt();
 
@@ -150,19 +155,16 @@ public class TestReservationDB {
                         } catch (NumberFormatException nfe) {
                             System.out.print("Enter a valid numerical value: ");
                         }
-                    }
+                    } // DONE
 
                     po.viewGuestReservations(id);
                     break;
-                case "5":
+                case "6":
                     System.out.println("<======= All =======>");
                     po.viewRoom();
-                    System.out.println("<====== Taken ======>");
-                    po.viewRoomTaken();
-                    System.out.println("<==== Not Taken ====>");
-                    po.viewRoomNotTaken();
-                    break;
-                case "6":
+
+                    break; // DONE
+                case "7": // DONE
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
@@ -207,7 +209,7 @@ public class TestReservationDB {
 
                     break;
 
-                case "7":
+                case "8": // DONE 
                     System.out.println("Please enter the id of the guest who's details you want to update.");
                     int gid;
                     while (true) {
@@ -243,7 +245,7 @@ public class TestReservationDB {
                     }
 
                     break;
-                case "8":
+                case "9": // DONE
                     System.out.println("Please enter the id of the guest who's billing you want to update");
 
                     while (true) {
@@ -300,7 +302,7 @@ public class TestReservationDB {
                     po.updateBilling(bid, input, initialcharges, misccharges, cal);
 
                     break;
-                case "9":
+                case "10": // DONE
 
                     System.out.println("Please enter the id of the guest who's reservation you want to delete");
 
@@ -332,7 +334,7 @@ public class TestReservationDB {
 
                     break;
 
-                case "10":
+                case "11": // NOT DONE
                     System.out.println("Please enter the id of the guest who's id you want to delete.");
                     while (true) {
                         try {
@@ -350,7 +352,7 @@ public class TestReservationDB {
                     }
 
                     break;
-                case "11":
+                case "12":
                     quit = true;
                     break;
                 default:

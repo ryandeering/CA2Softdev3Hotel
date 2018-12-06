@@ -113,6 +113,34 @@ public class PersistenceOperations {
 
     }
 
+    public void viewRoomTaken() {
+        em.getTransaction().begin();
+
+        TypedQuery<Room> query
+                = em.createQuery("SELECT ro FROM Room ro WHERE ro.order by ro.roid", Room.class);
+        List<Room> results = query.getResultList();
+
+        for (Room ro : results) {
+            //findReservation(int rid);
+            System.out.println(ro);
+        }
+        em.getTransaction().commit();
+    }
+
+    public void viewRoomNotTaken() {
+        em.getTransaction().begin();
+
+        TypedQuery<Room> query
+                = em.createQuery("SELECT ro FROM Room ro order by ro.roid", Room.class);
+        List<Room> results = query.getResultList();
+
+        for (Room ro : results) {
+            System.out.println(ro);
+        }
+        em.getTransaction().commit();
+
+    }
+
     public void viewGuestReservations(int id) {
         em.getTransaction().begin();
         Guest g = em.find(Guest.class, id);
@@ -122,6 +150,23 @@ public class PersistenceOperations {
             g.printReservations();
         }
         em.getTransaction().commit();
+    }
+
+    public void viewGuestReservationsDate(String date) {
+        System.out.println("debug: " + date);
+        em.getTransaction().begin();
+
+        String sq2 = "SELECT r FROM Reservation r WHERE r.cidate = CAST('" + date + "' AS date) order by r.cidate";
+
+        TypedQuery<Reservation> query = em.createQuery(sq2, Reservation.class);
+        List<Reservation> results = query.getResultList();
+
+        for (Reservation r : results) {
+            System.out.println(r);
+        }
+
+        em.getTransaction().commit();
+
     }
 
     public void deleteReservation(int rid, int gid) {
@@ -210,19 +255,6 @@ public class PersistenceOperations {
         g.setphonenum(phonenum);
         em.getTransaction().commit();
         System.out.println("Guest updated.");
-    }
-
-    public void viewGuestReservationsDate(String date) {
-        System.out.println("debug: " + date);
-        em.getTransaction().begin();
-        String sq2 = "SELECT r FROM Reservation r WHERE r.cidate = CAST('" + date + "' AS date) order by r.cidate";
-
-        TypedQuery<Reservation> query = em.createQuery(sq2, Reservation.class);
-        List<Reservation> results = query.getResultList();
-        for (Reservation r : results) {
-            System.out.println(r);
-        }
-        em.getTransaction().commit();
     }
 
 }
