@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
 // X00144631 Ryan Deering
 // X00145914 Daria Denisiuk
 // Made entirely through github: https://github.com/ryandeering/CA2Softdev3Hotel
+//accurate representation of this project https://www.youtube.com/watch?v=jx6uTTODrCM
 public class TestReservationDB {
 
     public static void main(String[] args) throws IOException {
@@ -103,7 +104,7 @@ public class TestReservationDB {
             int gid; // stupid hack
             switch (input) {
                 case "1":
-                     System.out.println("Enter Checkin Date (YYYY-MM-DD):");
+                    System.out.println("Enter Checkin Date (YYYY-MM-DD):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
@@ -111,7 +112,7 @@ public class TestReservationDB {
                     }
                     String checkinDate = input;
 
-                     System.out.println("Enter Check out Date (YYYY-MM-DD):");
+                    System.out.println("Enter Check out Date (YYYY-MM-DD):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
@@ -135,14 +136,13 @@ public class TestReservationDB {
                     }
                     int child = Integer.parseInt(input);
 
-                    
-                     System.out.println("Enter Reservation Date (YYYY-MM-DD):");
+                    System.out.println("Enter Reservation Date (YYYY-MM-DD):");
                     input = sc.nextLine();
                     while (input == null) {
                         System.out.println("Invalid Input try again!");
                         input = sc.nextLine();
                     }
-                    
+
                     String reservationDate = input;
 
                     System.out.println("Made Reservation");
@@ -180,11 +180,9 @@ public class TestReservationDB {
 
                     po.addGuest(fname, lname, email, phonenum);
                     po.viewGuestByName(fname);
-                    
-                    po.addReservation(fname,checkinDate, checkoutDate, adults, child, reservationDate); 
-                    
-                            
-                    
+
+                    po.addReservation(fname, checkinDate, checkoutDate, adults, child, reservationDate);
+
                     break;
 
                 case "2":
@@ -277,8 +275,8 @@ public class TestReservationDB {
                     break;
 
                 case "8":
-                 System.out.println("Please enter the id of the guest who's details you want to update.");
-                  
+                    System.out.println("Please enter the id of the guest who's details you want to update.");
+
                     while (true) {
                         try {
                             gid = Integer.parseInt(sc.nextLine());
@@ -314,7 +312,7 @@ public class TestReservationDB {
                     break;
 
                 case "9":
-                     System.out.println("Please enter the id of the guest who's billing you want to update");
+                    System.out.println("Please enter the id of the guest who's billing you want to update");
 
                     while (true) {
                         try {
@@ -371,7 +369,6 @@ public class TestReservationDB {
 
                     break;
 
-
                 case "10":
                     System.out.println("Please enter the id of the guest who's reservation you want to delete");
                     while (true) {
@@ -408,7 +405,7 @@ public class TestReservationDB {
                             gid = Integer.parseInt(sc.nextLine());
                             break;
                         } catch (NumberFormatException nfe) {
-                            System.out.print("Enter a valid numerical value: ");
+                            System.out.print("Enter a valid guest number or numerical value: ");
                         }
                     }
 
@@ -418,7 +415,6 @@ public class TestReservationDB {
                         System.out.println("Guest deleted.");
                     }
                     break;
-
                 case "12":
                     quit = true;
                     break;
@@ -431,4 +427,5 @@ public class TestReservationDB {
         }
         ro.closeDB();
     }
+
 }

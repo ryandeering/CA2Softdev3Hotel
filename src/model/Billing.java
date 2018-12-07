@@ -21,7 +21,7 @@ public class Billing {
     private Calendar paydate;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @PrimaryKeyJoinColumn(name = "bid")
+    @JoinColumn(name = "gid")
     private Guest gst;
 
     public Billing() {
