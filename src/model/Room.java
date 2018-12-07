@@ -69,12 +69,11 @@ public class Room {
     public void setRate(double rate) {
         this.rate = rate;
     }
-
-    @Override
+    
+        @Override
     public String toString() {
         return "Room ID/Number: " + roid + "Tier: " + roomtier + "Number of beds: " + numofbeds + "Rate: " + rate;
     }
 
-    
-    
+
 }

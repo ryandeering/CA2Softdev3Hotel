@@ -99,7 +99,7 @@ public class Reservation {
     public String toString() {
 
         return String.format("Reservation ID: " + rid
-                + " Check-In Date: " + dateFormat(cidate) + " "
+                + " Check-In Date: (" + dateFormat(cidate) + ") "
                 + " Check-Out Date: " + dateFormat(codate) + " "
                 + " Number of adults: " + numofAdults + " "
                 + " Number of children: " + numofChildren + " "

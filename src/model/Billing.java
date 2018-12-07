@@ -21,7 +21,7 @@ public class Billing {
     private Calendar paydate;
     
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "gid")
+    @PrimaryKeyJoinColumn(name = "bid")
     private Guest gst;
 
     public Billing() {
@@ -64,8 +64,8 @@ public class Billing {
     public void setPaydate(Calendar paydate) {
         this.paydate = paydate;
     }
-
-      @Override
+    
+          @Override
     public String toString() {
 
         return String.format("Billing ID: " + bid
@@ -78,6 +78,5 @@ public class Billing {
         return s;
     }
 
-    
-    
+
 }

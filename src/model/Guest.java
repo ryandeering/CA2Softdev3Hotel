@@ -35,6 +35,9 @@ public class Guest {
         this.phonenum = phonenum;
     }
 
+   
+    
+    
     public int getGid() {
         return gid;
     }
@@ -77,7 +80,7 @@ public class Guest {
 
     @Override
     public String toString() {
-        String s = String.format("Guest ID: " + gid + " Name: " + fname + " " + lname + " Email: " + email + " Phonenum: " + phonenum);
+        String s = String.format("Guest ID: (" + gid + ") Name:" + fname + " " + lname + " Email:" + email + " Phonenum:" + phonenum);
 
         return s;
     }

@@ -22,9 +22,9 @@ public class ReservationOperations {
             //   ods.setURL("jdbc:oracle:thin:@localhost:1521:XE");
             // ods.setUser("SYSTEM");
             // ods.setPassword("oracle"); // ryan linux
-            //      ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
-            //    ods.setUser("X00144631");
-            //     ods.setPassword("db21Aug98"); // ryan college
+//                  ods.setURL("jdbc:oracle:thin:@//10.10.2.7:1521/global1");
+//                ods.setUser("X00145914");
+//                 ods.setPassword("db21Sep99"); // ryan college
             conn = ods.getConnection();
             System.out.println("connected.");
         } catch (SQLException e) {
@@ -489,7 +489,41 @@ public class ReservationOperations {
                     + "ROOM table" + ex.getMessage());
         }
     }
+    public void insertReservationTable(String cidate, String codate, int numofAdults, int numofChildren, String reservationDate,int gid) {
+        try {
+            String sql = "INSERT INTO RESERVATION VALUES(res_seq.nextVal,?,?,?,?,?,?,?)";
+            pstmt = conn.prepareStatement(sql);
 
+            pstmt.setDate(1, Date.valueOf(cidate));
+            pstmt.setDate(2, Date.valueOf(codate));
+            pstmt.setInt(3, numofAdults);
+            pstmt.setInt(4, numofChildren);
+            pstmt.setDate(5, Date.valueOf(reservationDate));
+            pstmt.setInt(6, gid);
+            pstmt.setInt(7, 1);//room id
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "Reservation table" + ex.getMessage());
+        }
+    }
+public void updateReservationTable(int rid,String cidate, String codate, int numofAdults, int numofChildren, String reservationDate) {
+        try {
+            String sql = "UPDATE RESERVATION SET cidate=?,codate=?,numofAdults=?,numofChildren=?,reservationDate=?, WHERE rid=?";
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setDate(1, Date.valueOf(cidate));
+            pstmt.setDate(2, Date.valueOf(codate));
+            pstmt.setInt(3, numofAdults);
+            pstmt.setInt(4, numofChildren);
+            pstmt.setDate(5, Date.valueOf(reservationDate));
+            pstmt.setInt(6, rid);//room id
+            pstmt.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println("SQL Exception filling "
+                    + "Reservation table" + ex.getMessage());
+        }
+    }
     public void fillReservationTable() {
         try {
             String sql = "INSERT INTO RESERVATION VALUES(res_seq.nextVal,?,?,?,?,?,?,?)";
