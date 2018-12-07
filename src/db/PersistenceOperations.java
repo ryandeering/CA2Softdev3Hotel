@@ -125,7 +125,7 @@ public class PersistenceOperations {
         for (Guest g : results) {
             //System.out.println("------------------------------------------------");
             //System.out.println(g);
-            //System.out.println("Reservations made by the above guest are bellow");
+            //System.out.println("Reservations made by the above guest are below");
             //System.out.println("------------------------------------------------");
             Matcher m = Pattern.compile("\\(([^)]+)\\)").matcher(String.valueOf(g));
             while (m.find()) {

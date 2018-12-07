@@ -70,26 +70,26 @@ public class TestReservationDB {
         while (!quit) {
             System.out.println("");
             System.out.println("CREATE:");
-            System.out.println("Please press 1 to make a reservation (more than one table)"); //daria
+            System.out.println("Please press 1 to make a reservation (more than one table)"); 
             System.out.println("");
 
             System.out.println("READ:");
-            System.out.println("Please press 2 to see who is staying in the hotel today."); // daria 
-            System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); //daria 
-            System.out.println("Please press 4 to see all Guests and Reservations."); // daria 
-            System.out.println("Please press 5 to display reservation details for a guest"); //daria 
-            System.out.println("Please press 6 to display all rooms"); //daria 
+            System.out.println("Please press 2 to see who is staying in the hotel today."); 
+            System.out.println("Please press 3 to see who stayed in the hotel on a specified date."); 
+            System.out.println("Please press 4 to see all Guests and Reservations."); 
+            System.out.println("Please press 5 to display reservation details for a guest");
+            System.out.println("Please press 6 to display all rooms"); 
             System.out.println("");
 
             System.out.println("UPDATE:");
-            System.out.println("Please press 7 to update reservation details"); // daria 
-            System.out.println("Please press 8 to update guest details"); // ryan (Darias bf here just follow the ro.updateReservationTable() it is basically exactly the same XD)
-            System.out.println("Please press 9 to update a guest's billing details."); // ryan
+            System.out.println("Please press 7 to update reservation details"); 
+            System.out.println("Please press 8 to update guest details"); 
+            System.out.println("Please press 9 to update a guest's billing details."); 
             System.out.println("");
 
             System.out.println("DELETE:");
-            System.out.println("Please press 10 to delete a reservation"); //ryan
-            System.out.println("Please press 11 to delete a guest from the records."); // ryan            
+            System.out.println("Please press 10 to delete a reservation"); 
+            System.out.println("Please press 11 to delete a guest from the records.");            
             System.out.println("Press 12 to quit");
 
             String input = stdin.readLine();
